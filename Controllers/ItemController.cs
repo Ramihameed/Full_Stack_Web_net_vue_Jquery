@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace TrainingForDatabase.Controllers
 {
     public class ItemController : Controller
-    {
+    { 
         private readonly IItemService _itemService;
 
         public ItemController(IItemService itemRepository)
