@@ -8,7 +8,7 @@ using TrainingForDatabase.Data;
 
 #nullable disable
 
-namespace TrainingForDatabase.Data.Migrations
+namespace TrainingForDatabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -21,74 +21,6 @@ namespace TrainingForDatabase.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Item", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("price")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Items");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            description = "Description 1",
-                            name = "Item 1",
-                            price = 343
-                        },
-                        new
-                        {
-                            Id = 2,
-                            description = "Description 2",
-                            name = "Item 2",
-                            price = 750
-                        },
-                        new
-                        {
-                            Id = 3,
-                            description = "Description 3",
-                            name = "Item 3",
-                            price = 630
-                        },
-                        new
-                        {
-                            Id = 4,
-                            description = "Description 4",
-                            name = "Item 4",
-                            price = 737
-                        },
-                        new
-                        {
-                            Id = 5,
-                            description = "Description 5",
-                            name = "Item 5",
-                            price = 295
-                        },
-                        new
-                        {
-                            Id = 6,
-                            description = "Description 5",
-                            name = "Item 5",
-                            price = 510
-                        });
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -292,6 +224,129 @@ namespace TrainingForDatabase.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("TrainingForDatabase.Models.Department", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("dep_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Departments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            dep_name = "HR"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            dep_name = "IT"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            dep_name = "Finance"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            dep_name = "Marketing"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            dep_name = "Sales"
+                        });
+                });
+
+            modelBuilder.Entity("TrainingForDatabase.Models.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("price")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Items");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DepartmentId = 1,
+                            description = "Description 1",
+                            name = "Item 1",
+                            price = 174
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DepartmentId = 2,
+                            description = "Description 2",
+                            name = "Item 2",
+                            price = 989
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DepartmentId = 3,
+                            description = "Description 3",
+                            name = "Item 3",
+                            price = 158
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DepartmentId = 4,
+                            description = "Description 4",
+                            name = "Item 4",
+                            price = 171
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DepartmentId = 5,
+                            description = "Description 5",
+                            name = "Item 5",
+                            price = 695
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DepartmentId = 1,
+                            description = "Description 6",
+                            name = "Item 6",
+                            price = 111
+                        });
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -341,6 +396,22 @@ namespace TrainingForDatabase.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TrainingForDatabase.Models.Item", b =>
+                {
+                    b.HasOne("TrainingForDatabase.Models.Department", "Department")
+                        .WithMany("Items")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("TrainingForDatabase.Models.Department", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

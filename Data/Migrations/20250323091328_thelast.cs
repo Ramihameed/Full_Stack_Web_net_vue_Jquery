@@ -2,55 +2,55 @@
 
 #nullable disable
 
-namespace TrainingForDatabase.Data.Migrations
+namespace TrainingForDatabase.Migrations
 {
     /// <inheritdoc />
-    public partial class k : Migration
+    public partial class thelast : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
                 keyValue: 1,
-                column: "price",
-                value: 793);
-
-            migrationBuilder.UpdateData(
-                table: "Items",
-                keyColumn: "id",
-                keyValue: 2,
-                column: "price",
-                value: 668);
-
-            migrationBuilder.UpdateData(
-                table: "Items",
-                keyColumn: "id",
-                keyValue: 3,
                 column: "price",
                 value: 174);
 
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
+                keyValue: 2,
+                column: "price",
+                value: 989);
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
+                keyValue: 3,
+                column: "price",
+                value: 158);
+
+            migrationBuilder.UpdateData(
+                table: "Items",
+                keyColumn: "Id",
                 keyValue: 4,
                 column: "price",
-                value: 176);
+                value: 171);
 
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
                 keyValue: 5,
                 column: "price",
-                value: 869);
+                value: 695);
 
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
                 keyValue: 6,
                 column: "price",
-                value: 699);
+                value: 111);
         }
 
         /// <inheritdoc />
@@ -58,45 +58,45 @@ namespace TrainingForDatabase.Data.Migrations
         {
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
                 keyValue: 1,
                 column: "price",
-                value: 701);
+                value: 487);
 
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
                 keyValue: 2,
                 column: "price",
-                value: 320);
+                value: 325);
 
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
                 keyValue: 3,
                 column: "price",
-                value: 441);
+                value: 237);
 
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
                 keyValue: 4,
                 column: "price",
-                value: 89);
+                value: 676);
 
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
                 keyValue: 5,
                 column: "price",
-                value: 30);
+                value: 799);
 
             migrationBuilder.UpdateData(
                 table: "Items",
-                keyColumn: "id",
+                keyColumn: "Id",
                 keyValue: 6,
                 column: "price",
-                value: 283);
+                value: 704);
         }
     }
 }

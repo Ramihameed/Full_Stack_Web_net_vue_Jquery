@@ -9,11 +9,11 @@ using TrainingForDatabase.Data;
 
 #nullable disable
 
-namespace TrainingForDatabase.Data.Migrations
+namespace TrainingForDatabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250318145932_n")]
-    partial class n
+    [Migration("20250323091118_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -227,13 +227,60 @@ namespace TrainingForDatabase.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TrainingForDatabase.Models.Item", b =>
+            modelBuilder.Entity("TrainingForDatabase.Models.Department", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("dep_name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Departments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            dep_name = "HR"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            dep_name = "IT"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            dep_name = "Finance"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            dep_name = "Marketing"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            dep_name = "Sales"
+                        });
+                });
+
+            modelBuilder.Entity("TrainingForDatabase.Models.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -246,45 +293,60 @@ namespace TrainingForDatabase.Data.Migrations
                     b.Property<int>("price")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Items");
 
                     b.HasData(
                         new
                         {
-                            id = 1,
+                            Id = 1,
+                            DepartmentId = 1,
                             description = "Description 1",
                             name = "Item 1",
-                            price = 451
+                            price = 487
                         },
                         new
                         {
-                            id = 2,
+                            Id = 2,
+                            DepartmentId = 2,
                             description = "Description 2",
                             name = "Item 2",
-                            price = 449
+                            price = 325
                         },
                         new
                         {
-                            id = 3,
+                            Id = 3,
+                            DepartmentId = 3,
                             description = "Description 3",
                             name = "Item 3",
-                            price = 741
+                            price = 237
                         },
                         new
                         {
-                            id = 4,
+                            Id = 4,
+                            DepartmentId = 4,
                             description = "Description 4",
                             name = "Item 4",
-                            price = 997
+                            price = 676
                         },
                         new
                         {
-                            id = 5,
+                            Id = 5,
+                            DepartmentId = 5,
                             description = "Description 5",
                             name = "Item 5",
-                            price = 333
+                            price = 799
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DepartmentId = 1,
+                            description = "Description 6",
+                            name = "Item 6",
+                            price = 704
                         });
                 });
 
@@ -337,6 +399,22 @@ namespace TrainingForDatabase.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TrainingForDatabase.Models.Item", b =>
+                {
+                    b.HasOne("TrainingForDatabase.Models.Department", "Department")
+                        .WithMany("Items")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("TrainingForDatabase.Models.Department", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }
