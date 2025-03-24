@@ -34,6 +34,8 @@
       ,
       methods: {
         addItemReal() {
+            if (this.validationErrors.TextError == '')
+            {
           const newItem = {
             name: this.newItem.name,
             description: this.newItem.description,
@@ -46,13 +48,20 @@
               swal("added Successfully", "added Successfully", "success")
               setTimeout(() => {
           this.returnPage();
-        }, 3000); 
+        }, 2000); 
       })
      
             .catch(error => {
               console.error('Error adding item:', error);
             });
-        },
+        }
+        else {
+            swal("you did not follow the notes,Item not added");
+            setTimeout(() => {
+          this.returnPage();
+        }, 2000);
+            }
+            },
         returnPage() {
           window.location.href = '/Item';
         },
