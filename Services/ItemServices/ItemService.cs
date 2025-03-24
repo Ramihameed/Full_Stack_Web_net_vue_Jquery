@@ -41,8 +41,9 @@ namespace TrainingForDatabase.services
                 {
                     name = item.name,
                     description = item.description,
-                    price = item.price
-
+                    price = item.price,
+                    Id = item.Id,
+                    
                 };
 
 

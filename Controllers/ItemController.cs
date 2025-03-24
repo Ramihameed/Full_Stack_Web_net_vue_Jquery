@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TrainingForDatabase.Models;
-using TrainingForDatabase.services;
 using TrainingForDatabase.ItemVM;
-using Microsoft.EntityFrameworkCore;
+using TrainingForDatabase.services;
 
 namespace TrainingForDatabase.Controllers
 {

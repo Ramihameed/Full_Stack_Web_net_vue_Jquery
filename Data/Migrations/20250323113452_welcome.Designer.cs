@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingForDatabase.Data;
 
@@ -11,9 +12,11 @@ using TrainingForDatabase.Data;
 namespace TrainingForDatabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250323113452_welcome")]
+    partial class welcome
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -303,7 +306,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 1",
                             name = "Item 1",
-                            price = 534
+                            price = 522
                         },
                         new
                         {
@@ -311,7 +314,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 2,
                             description = "Description 2",
                             name = "Item 2",
-                            price = 826
+                            price = 260
                         },
                         new
                         {
@@ -319,7 +322,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 3,
                             description = "Description 3",
                             name = "Item 3",
-                            price = 790
+                            price = 384
                         },
                         new
                         {
@@ -327,7 +330,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 4,
                             description = "Description 4",
                             name = "Item 4",
-                            price = 445
+                            price = 713
                         },
                         new
                         {
@@ -335,7 +338,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 5,
                             description = "Description 5",
                             name = "Item 5",
-                            price = 875
+                            price = 283
                         },
                         new
                         {
@@ -343,7 +346,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 6",
                             name = "Item 6",
-                            price = 845
+                            price = 470
                         });
                 });
 

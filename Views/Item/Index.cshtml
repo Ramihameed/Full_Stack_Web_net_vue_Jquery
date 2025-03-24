@@ -24,6 +24,8 @@
                     <td>{{ item.name }}</td>
                     <td>{{ item.description }}</td>
                     <td>{{ item.price }}</td>
+                
+                    
                     <td>
                         <button type="button" v-on:click="EditItem(item.id)" class="btn btn-primary">
                             Edit
@@ -52,7 +54,8 @@
             newItem: {
                 name: '',
                 description: '',
-                price: 0
+                price: 0,
+               
             },
             loading: true,
         },
@@ -67,6 +70,7 @@
                 axios.get('/Item/GetItems')
                     .then(response => {
                         this.items = response.data;
+                        console.log(response);
                         this.loading = false;
                     })
                     .catch(error => {
@@ -77,7 +81,8 @@
             addItem() {
                 
                 window.location.href = `/Item/AddItemPage`;
-                },Delete(itemId) {
+                },
+                Delete(itemId) {
         axios.delete(`/Item/Delete/${itemId}`)
             .then(response => {
                 this.fetchItems();  // Reload the items after successful deletion
