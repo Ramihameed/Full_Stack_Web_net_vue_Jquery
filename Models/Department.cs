@@ -8,9 +8,9 @@ namespace TrainingForDatabase.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
-        public string dep_name { get; set; }
+        
+        public string name { get; set; }
 
-        public ICollection<Item> Items { get; set; }
+        public ICollection<Item>? items { get; set; }
     }
 }

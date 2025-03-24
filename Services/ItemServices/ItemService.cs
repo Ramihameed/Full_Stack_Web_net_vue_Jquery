@@ -67,7 +67,8 @@ namespace TrainingForDatabase.services
                 Id = item.Id,
                 name = item.name,
                 description = item.description,
-                price = item.price
+                price = item.price,
+                Departmentname = item.Departmentname
             };
             return newItem;
 
@@ -79,7 +80,7 @@ namespace TrainingForDatabase.services
             {
                 var data = await _context.Items.FindAsync(model.Id);
 
-                data.Id = model.Id;
+                data.Departmentname = model.Departmentname;
                 data.name = model.name;
                 data.description = model.description;
                 data.price = model.price;

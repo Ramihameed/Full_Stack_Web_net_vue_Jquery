@@ -19,6 +19,8 @@ namespace TrainingForDatabase.Models
 
         public int? DepartmentId { get; set; }
 
+        public string? Departmentname { get; set; }
+
         public Department? Department { get; set; }
     }
 }

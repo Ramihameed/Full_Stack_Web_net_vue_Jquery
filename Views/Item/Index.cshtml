@@ -16,6 +16,7 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
+                    <th>Department</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -23,7 +24,9 @@
                 <tr v-for="item in items" :key="item.id">
                     <td>{{ item.name }}</td>
                     <td>{{ item.description }}</td>
-                    <td>{{ item.price }}</td>
+                    <td>${{ item.price }}</td>
+                    <td>{{ item.Departmentname }}</td>
+
                 
                     
                     <td>
@@ -55,6 +58,7 @@
                 name: '',
                 description: '',
                 price: 0,
+                Departmentname : ''
                
             },
             loading: true,

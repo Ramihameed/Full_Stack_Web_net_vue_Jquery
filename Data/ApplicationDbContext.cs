@@ -19,11 +19,11 @@ namespace TrainingForDatabase.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Department>().HasData(
-                new Department { Id = 1, dep_name = "HR" },
-                new Department { Id = 2, dep_name = "IT" },
-                new Department { Id = 3, dep_name = "Finance" },
-                new Department { Id = 4, dep_name = "Marketing" },
-                new Department { Id = 5, dep_name = "Sales" }
+                new Department { Id = 1, name = "HR" , items = [] },
+                new Department { Id = 2, name = "IT" , items = [] },
+                new Department { Id = 3, name = "Finance" , items = [] },
+                new Department { Id = 4, name = "Marketing", items = [] },
+                new Department { Id = 5, name = "Sales" , items = [] }
             );
 
             modelBuilder.Entity<Item>().HasData(

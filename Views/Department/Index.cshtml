@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Departments";
+}
+<div id="app">
+    <div v-if="loading">
+        Loading items...
+    </div>
+    <div v-else>
+        <h2>Departments List</h2>
+
+        <button type="button" v-on:click="addItem()" class="btn btn-success">Add</button>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Num Of items</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in departments" :key="item.id">
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.items === null ? '0' : item.items.length }}</td>
+
+                    <td>
+                        <button type="button" v-on:click="EditItem(item.id)" class="btn btn-primary">
+                            Edit
+                        </button>
+                        <button type="button" v-on:click="Delete(item.id)" class="btn btn-danger">
+                            Delete
+                        </button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+        <hr />
+
+
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            departments: [],
+            item: {
+                id: 0,
+                name: '',
+                items: []
+            },
+            loading: true
+        },
+        beforeMount() {
+            this.fetchitems(); 
+        },
+        methods: {
+            fetchitems() {
+                axios.get('/Department/GetAllDepartments') 
+                    .then(response => {
+                        this.departments = response.data;
+                        console.log(response);
+                        this.loading = false; 
+                    })
+                    .catch(error => {
+                        console.error('Error fetching items:', error);
+                        this.loading = false; // Hide loading on error
+                    });
+            },
+            addItem() {
+                window.location.href = '/Item/AddItemPage'; // Redirect to add item page
+            },
+            EditItem(itemId) {
+                window.location.href = `/Item/Edit/${itemId}`; // Redirect to edit item page with item ID
+            },
+            Delete(itemId) {
+                axios.delete(`/Department/Delete/${itemId}`) // Make sure the URL is correct
+                    .then(response => {
+                        this.fetchitems(); // Reload the list after successful deletion
+                    })
+                    .catch(error => {
+                        console.error('Error deleting item:', error);
+                    });
+            }
+        }
+    });
+</script>

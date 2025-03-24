@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingForDatabase.Data;
 
@@ -11,9 +12,11 @@ using TrainingForDatabase.Data;
 namespace TrainingForDatabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250324100828_msmsms")]
+    partial class msmsms
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -306,7 +309,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 1",
                             name = "Item 1",
-                            price = 679
+                            price = 878
                         },
                         new
                         {
@@ -314,7 +317,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 2,
                             description = "Description 2",
                             name = "Item 2",
-                            price = 165
+                            price = 109
                         },
                         new
                         {
@@ -322,7 +325,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 3,
                             description = "Description 3",
                             name = "Item 3",
-                            price = 414
+                            price = 275
                         },
                         new
                         {
@@ -330,7 +333,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 4,
                             description = "Description 4",
                             name = "Item 4",
-                            price = 969
+                            price = 821
                         },
                         new
                         {
@@ -338,7 +341,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 5,
                             description = "Description 5",
                             name = "Item 5",
-                            price = 510
+                            price = 423
                         },
                         new
                         {
@@ -346,7 +349,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 6",
                             name = "Item 6",
-                            price = 812
+                            price = 665
                         });
                 });
 
@@ -404,7 +407,7 @@ namespace TrainingForDatabase.Migrations
             modelBuilder.Entity("TrainingForDatabase.Models.Item", b =>
                 {
                     b.HasOne("TrainingForDatabase.Models.Department", "Department")
-                        .WithMany("items")
+                        .WithMany("Items")
                         .HasForeignKey("DepartmentId");
 
                     b.Navigation("Department");
@@ -412,7 +415,7 @@ namespace TrainingForDatabase.Migrations
 
             modelBuilder.Entity("TrainingForDatabase.Models.Department", b =>
                 {
-                    b.Navigation("items");
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }

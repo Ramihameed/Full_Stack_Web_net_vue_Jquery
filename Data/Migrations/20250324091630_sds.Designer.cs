@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingForDatabase.Data;
 
@@ -11,9 +12,11 @@ using TrainingForDatabase.Data;
 namespace TrainingForDatabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250324091630_sds")]
+    partial class sds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,7 +235,7 @@ namespace TrainingForDatabase.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("name")
+                    b.Property<string>("dep_name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -244,27 +247,27 @@ namespace TrainingForDatabase.Migrations
                         new
                         {
                             Id = 1,
-                            name = "HR"
+                            dep_name = "HR"
                         },
                         new
                         {
                             Id = 2,
-                            name = "IT"
+                            dep_name = "IT"
                         },
                         new
                         {
                             Id = 3,
-                            name = "Finance"
+                            dep_name = "Finance"
                         },
                         new
                         {
                             Id = 4,
-                            name = "Marketing"
+                            dep_name = "Marketing"
                         },
                         new
                         {
                             Id = 5,
-                            name = "Sales"
+                            dep_name = "Sales"
                         });
                 });
 
@@ -278,9 +281,6 @@ namespace TrainingForDatabase.Migrations
 
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
-
-                    b.Property<string>("Departmentname")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("description")
                         .IsRequired()
@@ -306,7 +306,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 1",
                             name = "Item 1",
-                            price = 679
+                            price = 906
                         },
                         new
                         {
@@ -314,7 +314,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 2,
                             description = "Description 2",
                             name = "Item 2",
-                            price = 165
+                            price = 294
                         },
                         new
                         {
@@ -322,7 +322,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 3,
                             description = "Description 3",
                             name = "Item 3",
-                            price = 414
+                            price = 513
                         },
                         new
                         {
@@ -330,7 +330,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 4,
                             description = "Description 4",
                             name = "Item 4",
-                            price = 969
+                            price = 607
                         },
                         new
                         {
@@ -338,7 +338,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 5,
                             description = "Description 5",
                             name = "Item 5",
-                            price = 510
+                            price = 128
                         },
                         new
                         {
@@ -346,7 +346,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 6",
                             name = "Item 6",
-                            price = 812
+                            price = 728
                         });
                 });
 
@@ -404,7 +404,7 @@ namespace TrainingForDatabase.Migrations
             modelBuilder.Entity("TrainingForDatabase.Models.Item", b =>
                 {
                     b.HasOne("TrainingForDatabase.Models.Department", "Department")
-                        .WithMany("items")
+                        .WithMany("Items")
                         .HasForeignKey("DepartmentId");
 
                     b.Navigation("Department");
@@ -412,7 +412,7 @@ namespace TrainingForDatabase.Migrations
 
             modelBuilder.Entity("TrainingForDatabase.Models.Department", b =>
                 {
-                    b.Navigation("items");
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }
