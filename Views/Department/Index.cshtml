@@ -38,8 +38,6 @@
             </tbody>
         </table>
         <hr />
-
-
     </div>
 </div>
 
@@ -68,19 +66,19 @@
                     })
                     .catch(error => {
                         console.error('Error fetching items:', error);
-                        this.loading = false; // Hide loading on error
+                        this.loading = false; 
                     });
             },
             addItem() {
-                window.location.href = '/Item/AddItemPage'; // Redirect to add item page
+                window.location.href = '/Department/AddItemPage'; 
             },
             EditItem(itemId) {
-                window.location.href = `/Item/Edit/${itemId}`; // Redirect to edit item page with item ID
+                window.location.href = `/Department/Edit/${itemId}`; 
             },
             Delete(itemId) {
-                axios.delete(`/Department/Delete/${itemId}`) // Make sure the URL is correct
+                axios.delete(`/Department/Delete/${itemId}`) 
                     .then(response => {
-                        this.fetchitems(); // Reload the list after successful deletion
+                        this.fetchitems(); 
                     })
                     .catch(error => {
                         console.error('Error deleting item:', error);

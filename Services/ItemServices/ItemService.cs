@@ -78,6 +78,7 @@ namespace TrainingForDatabase.services
         {
             try
             {
+
                 var data = await _context.Items.FindAsync(model.Id);
 
                 data.Departmentname = model.Departmentname;

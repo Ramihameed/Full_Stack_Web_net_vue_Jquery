@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TrainingForDatabase.Data;
+using TrainingForDatabase.Models;
 using TrainingForDatabase.services;
 using TrainingForDatabase.Services.DepartmentServices;
 
@@ -51,6 +52,43 @@ namespace TrainingForDatabase.Controllers
             if (result)
             {
                 return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetItemById(int id)
+        {
+            var result = await _department_service.GetItemById(id);
+
+            if (result != null)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            return View(id);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Update([FromBody] Department item)
+        {
+
+            var res = await _department_service.Update(item);
+            if (res)
+            {
+
+                return Ok("success");
             }
             else
             {
