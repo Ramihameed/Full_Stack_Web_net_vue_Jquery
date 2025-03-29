@@ -5,7 +5,7 @@ using TrainingForDatabase.services;
 namespace TrainingForDatabase.Controllers
 {
     public class ItemController : Controller
-    { 
+    {
         private readonly IItemService _itemService;
 
         public ItemController(IItemService itemRepository)
@@ -26,26 +26,81 @@ namespace TrainingForDatabase.Controllers
 
 
 
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> GetItems()
         {
-            var items = await _itemService.GetAllItems();
-            if (items != null)
+
+
+            try
             {
-                return Ok(items);
+
+
+
+                var draw = Request.Form["draw"].FirstOrDefault();
+
+                // Skip number of Rows count  
+                var start = Request.Form["start"].FirstOrDefault();
+
+                // Paging Length 10,20  
+                var length = Request.Form["length"].FirstOrDefault();
+
+                // Sort Column Name  
+                var sortColumn = Request.Form["columns[" + Request.Form["order[0][column]"].FirstOrDefault() + "][name]"].FirstOrDefault();
+
+
+                // Sort Column Direction (asc, desc)  
+                var sortColumnDirection = Request.Form["order[0][dir]"].FirstOrDefault();
+                var colDir = "";
+                if (sortColumnDirection == "asc")
+                {
+                    colDir = "ascending";
+                }
+                else
+                {
+                    colDir = "descending";
+                }
+                if (string.IsNullOrEmpty(sortColumn))
+                {
+                    sortColumn = "id";
+                }
+                // Search Value from (Search box)  
+                int pageSize = length != null ? Convert.ToInt32(length) : 0;
+
+                //var culture = (await _workContext.GetCurrentUser()).Culture;
+
+                int skip = start != null ? Convert.ToInt32(start) : 0;
+
+
+
+                var searchValue = Request.Form["search[value]"].FirstOrDefault();
+
+
+
+
+
+                var data = await _itemService.GetAllItems(searchValue, sortColumn, colDir, skip, pageSize);
+
+
+
+                return Json(new { draw = draw, RecordsTotal = data.RecordsTotal, data = data.itemList });
+
+
             }
-            else
+            catch (Exception exc)
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError, exc.Message);
             }
         }
 
 
 
+
+
+
         [HttpGet]
         public async Task<IActionResult> AddItemPage()
-        {         
-                return View();           
+        {
+            return View();
         }
 
         [HttpPost]
@@ -62,7 +117,7 @@ namespace TrainingForDatabase.Controllers
             {
                 return BadRequest();
             }
-            
+
         }
 
 
@@ -112,6 +167,12 @@ namespace TrainingForDatabase.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Deletee()
+        {
+            return View();
         }
     }
 }

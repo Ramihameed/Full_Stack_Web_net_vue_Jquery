@@ -4,6 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using TrainingForDatabase.ItemVM;
+using TrainingForDatabase.ViewModels.Item;
+using System.Linq.Dynamic.Core;
+
 
 namespace TrainingForDatabase.services
 {
@@ -16,22 +19,43 @@ namespace TrainingForDatabase.services
             _context = context;
         }
 
-        public async Task<List<Item>> GetAllItems()
+        public async Task<ItemListVM> GetAllItems(string SearchValue, string SortColumn, string ColDir, int Skip, int PageSize, string lang = "")
         {
             try
             {
-                await _context.Items.ToListAsync();
+                int recordsTotal = await _context.Items.CountAsync();
+
+                var models = _context.Items//.Include(i => i.Department)
+                    .AsEnumerable<Models.Item>()
+                    .Select(i => new itemVM
+                    {
+                        name = i.name,
+                        description = i.description != null ? i.description : "",
+                        price = i.price,
+                        // Departmentname = i.Department.name != null ? i.Department.name : "didnt get the name"
+                    }).AsQueryable().OrderBy(SortColumn + " " + ColDir).Skip(Skip).Take(PageSize).ToList();
+
+
+                var Data = new ItemListVM
+                {
+                    itemList = models,
+                    RecordsTotal = recordsTotal,
+                };
+                return Data;
 
             }
-            catch (Exception ex)
+            catch (Exception exc)
             {
 
-                Console.WriteLine($"Error: {ex.Message}");
-
+                var Data = new ItemListVM
+                {
+                    itemList = new List<itemVM>(),
+                    RecordsTotal = 0,
+                };
+                return Data;
             }
-            return await _context.Items.ToListAsync();
-
         }
+
 
         public async Task<bool> AddItem(itemVM item)
         {
@@ -43,7 +67,7 @@ namespace TrainingForDatabase.services
                     description = item.description,
                     price = item.price,
                     Id = item.Id,
-                    
+
                 };
 
 
@@ -68,7 +92,7 @@ namespace TrainingForDatabase.services
                 name = item.name,
                 description = item.description,
                 price = item.price,
-                Departmentname = item.Departmentname
+                Departmentname = item.Department.name
             };
             return newItem;
 
@@ -81,7 +105,7 @@ namespace TrainingForDatabase.services
 
                 var data = await _context.Items.FindAsync(model.Id);
 
-                data.Departmentname = model.Departmentname;
+                data.Department.name = model.Departmentname;
                 data.name = model.name;
                 data.description = model.description;
                 data.price = model.price;
@@ -127,6 +151,6 @@ namespace TrainingForDatabase.services
 
 
 
-    }
+}
 
 
