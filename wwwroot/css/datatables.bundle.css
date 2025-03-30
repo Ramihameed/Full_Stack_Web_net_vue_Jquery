@@ -6,10 +6,20 @@ table.dataTable {
   border-collapse: separate !important;
   border-spacing: 0; }
 
-table.dataTable td,
-table.dataTable th {
-  -webkit-box-sizing: content-box;
-  box-sizing: content-box; }
+    table.dataTable td,
+    table.dataTable th {
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+    }
+
+    table.dataTable th {
+        background-color: #007bff; /* Bootstrap primary blue */
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+
+
+}
 
 table.dataTable td.dataTables_empty,
 table.dataTable th.dataTables_empty {

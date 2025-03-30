@@ -1,0 +1,50 @@
+﻿<div class="container mt-5">
+    <div class="table table-bordered">
+        <thead>
+            <tr>
+                <th colspan="2" class="text-center bg-info text-white fs-4 fw-bold text-xxl-center">Edit Item Of Id @Model</th>
+            </tr>
+        </thead>
+    </div>
+
+    <div id="app1" class="table-responsive-sm mt-4">
+        <form class="form-control" v-on:submit.prevent>
+            <div class="mb-3">
+                <label for="ID" class="form-label border-3">Id</label>
+                <!-- v-model binds to item.id -->
+                <input v-model="item.id" type="number" id="Id" class="form-control border-3" required />
+
+                <!-- The Delete button calls the Delete method and prevents form submission -->
+                <button type="button" v-on:click="EditItem(item.id)" class="btn btn-danger">Edit</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+
+</div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app1',
+        data: {
+            item: {
+                id: 0,
+                name: '',
+                description: '',
+                price: 0,
+                departmentname: ''
+            },
+        },
+
+        methods: {
+                EditItem(itemId) {
+        window.location.href = `/Item/Edit/${itemId}`;
+    }}
+    });
+</script>

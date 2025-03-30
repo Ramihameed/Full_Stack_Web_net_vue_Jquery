@@ -1,0 +1,50 @@
+﻿/* Ensures that the header is visible */
+table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Ensures the header is always on top */
+    background-color: #007bff; /* Premium blue background */
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Fixes the header for scrolling */
+table th {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Keeps the header visible above the table body */
+}
+
+/* Make sure the table has proper padding and border */
+th, td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+tbody {
+    background-color: #fff;
+}
+
+/* Optional: Fix hover effects */
+tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Ensure the table has some margin on top */
+.table-responsive {
+    margin-top: 30px;
+    overflow-x: auto; /* For horizontal scrolling if needed */
+}
+.centered-heading {
+    text-align: center; /* Centers the text horizontally */
+    font-size: 2rem; /* Adjust the font size */
+    font-weight: 600; /* Make the heading bold */
+    color: #007bff; /* Premium blue color */
+    letter-spacing: 1px; /* Add a little space between letters */
+    text-transform: uppercase; /* Make the text uppercase */
+    margin-top: 20px; /* Add some space at the top if needed */
+}

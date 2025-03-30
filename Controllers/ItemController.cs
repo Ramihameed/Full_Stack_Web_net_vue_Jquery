@@ -17,6 +17,10 @@ namespace TrainingForDatabase.Controllers
             return View();
         }
 
+        public async Task<IActionResult> Editt(int id)
+        {
+            return View();
+        }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
