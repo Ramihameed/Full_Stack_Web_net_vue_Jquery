@@ -14,6 +14,7 @@ namespace TrainingForDatabase.services
     {
         private readonly ApplicationDbContext _context;
 
+
         public ItemService(ApplicationDbContext context)
         {
             _context = context;
@@ -25,14 +26,13 @@ namespace TrainingForDatabase.services
             {
                 int recordsTotal = await _context.Items.CountAsync();
 
-                var models = _context.Items//.Include(i => i.Department)
+                var models = _context.Items.Include(i => i.Department)
                     .AsEnumerable<Models.Item>()
                     .Select(i => new itemVM
                     {
                         name = i.name,
                         description = i.description != null ? i.description : "",
-                        price = i.price,
-                        // Departmentname = i.Department.name != null ? i.Department.name : "didnt get the name"
+                        price = i.price                        
                     }).AsQueryable().OrderBy(SortColumn + " " + ColDir).Skip(Skip).Take(PageSize).ToList();
 
 
@@ -92,6 +92,7 @@ namespace TrainingForDatabase.services
                 name = item.name,
                 description = item.description,
                 price = item.price,
+                DepartmentId = item.DepartmentId
             };
             return newItem;
 
@@ -107,6 +108,7 @@ namespace TrainingForDatabase.services
                 data.name = model.name;
                 data.description = model.description;
                 data.price = model.price;
+                data.Departmentname = model.Departmentname;
 
 
                 await _context.SaveChangesAsync();

@@ -32,7 +32,7 @@ namespace TrainingForDatabase.Data
 );
 
             modelBuilder.Entity<Item>().HasData(
-                new Item { Id = 1, name = "Item 1", description = "Description 1", price = new Random().Next(1, 1000), DepartmentId = 1 },
+                new Item { Id = 1, name = "Item 1", description = "Description 1", price = new Random().Next(1, 1000), DepartmentId = 1},
                 new Item { Id = 2, name = "Item 2", description = "Description 2", price = new Random().Next(1, 1000), DepartmentId = 2 },
                 new Item { Id = 3, name = "Item 3", description = "Description 3", price = new Random().Next(1, 1000), DepartmentId = 3 },
                 new Item { Id = 4, name = "Item 4", description = "Description 4", price = new Random().Next(1, 1000), DepartmentId = 4 },

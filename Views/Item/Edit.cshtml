@@ -32,7 +32,7 @@
             <select v-model="selectedDepartment" id="department" class="form-control">
                 <option disabled value="">Select a department</option>
                 <option v-for="item  in departments" :key="item.name" :value="item.name">
-                    {{ item.dep_name }}
+                    {{ item.name }}
                 </option>
             </select>
         </div>
