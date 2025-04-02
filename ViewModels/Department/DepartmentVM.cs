@@ -1,10 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using TrainingForDatabase.ItemVM;
 namespace TrainingForDatabase.ViewModels.Department
 {
     public class DepartmentVM
-    {
-        [Required]
-        public string dep_name { get; set; }
+    {   
+            public int Id { get; set; }
+
+
+            public string name { get; set; }
+
+            public ICollection<itemVM> items { get; set; }
+        
     }
 }

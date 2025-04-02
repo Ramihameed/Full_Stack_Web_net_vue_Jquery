@@ -19,16 +19,16 @@ namespace TrainingForDatabase.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Department>().HasData(
-    new Department { Id = 1, name = "HR", items = new List<Item>() },
-    new Department { Id = 2, name = "IT", items = new List<Item>() },
-    new Department { Id = 3, name = "Finance", items = new List<Item>() },
-    new Department { Id = 4, name = "Marketing", items = new List<Item>() },
-    new Department { Id = 5, name = "Sales", items = new List<Item>() },
-    new Department { Id = 6, name = "Operations", items = new List<Item>() },
-    new Department { Id = 7, name = "Legal", items = new List<Item>() },
-    new Department { Id = 8, name = "Customer Service", items = new List<Item>() },
-    new Department { Id = 9, name = "Research and Development", items = new List<Item>() },
-    new Department { Id = 10, name = "Supply Chain", items = new List<Item>() }
+    new Department { Id = 1, name = "HR" },
+    new Department { Id = 2, name = "IT" },
+    new Department { Id = 3, name = "Finance" },
+    new Department { Id = 4, name = "Marketing" },
+    new Department { Id = 5, name = "Sales" },
+    new Department { Id = 6, name = "Operations" },
+    new Department { Id = 7, name = "Legal" },
+    new Department { Id = 8, name = "Customer Service" },
+    new Department { Id = 9, name = "Research and Development" },
+    new Department { Id = 10, name = "Supply Chain"}
 );
 
             modelBuilder.Entity<Item>().HasData(

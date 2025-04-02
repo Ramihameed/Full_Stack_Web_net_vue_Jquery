@@ -17,11 +17,11 @@ namespace TrainingForDatabase.ItemVM
         [Range(0, int.MaxValue, ErrorMessage = "Price must be a positive number.")]
         public int price { get; set; }
 
-        public int? DepartmentId { get; set; }
+        public int DepartmentId { get; set; }
 
         public string Departmentname { get; set; }
 
-        public Department? Department { get; set; }
+        public Department Department { get; set; }
     }
     }
 

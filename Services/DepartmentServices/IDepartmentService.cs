@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TrainingForDatabase.ItemVM;
 using TrainingForDatabase.Models;
+using TrainingForDatabase.ViewModels.Department;
 
 namespace TrainingForDatabase.Services.DepartmentServices
 {
@@ -12,10 +13,10 @@ namespace TrainingForDatabase.Services.DepartmentServices
 
         Task<Department> GetItemById(int id);
 
-        Task<bool> AddItem(Department item);
+        Task<bool> AddItem(DepartmentVM model);
 
 
-        Task<bool> Update(Department newly);
+        Task<bool> Update(DepartmentVM model);
 
     }
 }

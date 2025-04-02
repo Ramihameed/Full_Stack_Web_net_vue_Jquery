@@ -30,12 +30,18 @@ namespace TrainingForDatabase.services
                     .AsEnumerable<Models.Item>()
                     .Select(i => new itemVM
                     {
+                        Id = i.Id,
                         name = i.name,
                         description = i.description != null ? i.description : "",
-                        price = i.price                        
+                        price = i.price //issue
+                        //DepartmentId = i.DepartmentId,
+                        //Department = i.Department,
+                        //Departmentname = i.Department.name.ToString()
+                        //Department = i.Department,
+                        //Departmentname = i.Department.name != null ? i.Department.name : "h"
                     }).AsQueryable().OrderBy(SortColumn + " " + ColDir).Skip(Skip).Take(PageSize).ToList();
 
-
+                // issue
                 var Data = new ItemListVM
                 {
                     itemList = models,
@@ -108,7 +114,6 @@ namespace TrainingForDatabase.services
                 data.name = model.name;
                 data.description = model.description;
                 data.price = model.price;
-                data.Departmentname = model.Departmentname;
 
 
                 await _context.SaveChangesAsync();

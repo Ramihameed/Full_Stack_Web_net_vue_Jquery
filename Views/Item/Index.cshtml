@@ -69,6 +69,8 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
+                  @*   <th>Departmentname</th> *@
+
                  
                 </tr>
 
@@ -205,7 +207,10 @@
                      { "data": "description", "name": "description", "autoWidth": false },
 
 
-                     { "data": "price", "name": "price", "autoWidth": false }
+                     { "data": "price", "name": "price", "autoWidth": false },
+
+                    // { "data": "Departmentname", "name": "Departmentname", "autoWidth": false }
+
 
 
 
@@ -258,18 +263,18 @@
         el: '#app',
         data: {
             items: [],
-            newItem: {
-                name: '',
-                description: '',
-                price: 0,
-                Departmentname : ''
+            // newItem: {
+            //     name: '',
+            //     description: '',
+            //     price: 0,
+            //     DepartmentId = 0
 
-            },
-            loading: true,
+            // },
+            // loading: true,
         },
-        beforeMount() {
-            this.fetchItems();
-        },
+        // beforeMount() {
+        //     this.fetchItems();
+        // },
         methods: {
             home(){
            window.location.href = `/Home/`;
@@ -278,18 +283,18 @@
             EditItem() {
                 window.location.href = `/Item/Editt/`;
             },
-            fetchItems() {
-                axios.get('/Item/GetItems')
-                    .then(response => {
-                        this.items = response.data;
-                        console.log(response);
-                        this.loading = false;
-                    })
-                    .catch(error => {
-                        console.error('Error fetching items:', error);
-                        this.loading = false;
-                    });
-            },
+            // fetchItems() {
+            //     axios.get('/Item/GetItems')
+            //         .then(response => {
+            //             this.items = response.data;
+            //             console.log(response);
+            //             this.loading = false;
+            //         })
+            //         .catch(error => {
+            //             console.error('Error fetching items:', error);
+            //             this.loading = false;
+            //         });
+            // },
             addItem() {
 
                 window.location.href = `/Item/AddItemPage`;
@@ -299,11 +304,11 @@
     }
 
             ,
-            clearForm() {
-                this.newItem.name = '';
-                this.newItem.description = '';
-                this.newItem.price = 0;
-            }
+            // clearForm() {
+            //     this.newItem.name = '';
+            //     this.newItem.description = '';
+            //     this.newItem.price = 0;
+            // }
         }
     });
 </script>

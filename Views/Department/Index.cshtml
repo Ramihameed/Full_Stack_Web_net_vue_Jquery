@@ -70,13 +70,13 @@
                     });
             },
             addItem() {
-                window.location.href = '/Department/AddItemPage'; 
+                window.location.href = '/Department/AddItemPage/'; 
             },
             EditItem(itemId) {
-                window.location.href = `/Department/Edit/${itemId}`; 
+                window.location.href = `/Department/Edit/${itemId}`;
             },
             Delete(itemId) {
-                axios.delete(`/Department/Delete/${itemId}`) 
+                axios.delete(`/Department/Delete/${itemId}`)
                     .then(response => {
                         this.fetchitems(); 
                     })

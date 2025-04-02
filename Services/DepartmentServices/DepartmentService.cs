@@ -3,6 +3,7 @@ using TrainingForDatabase.Data;
 using TrainingForDatabase.ItemVM;
 using TrainingForDatabase.Models;
 using TrainingForDatabase.services;
+using TrainingForDatabase.ViewModels.Department;
 
 namespace TrainingForDatabase.Services.DepartmentServices
 {
@@ -43,14 +44,19 @@ namespace TrainingForDatabase.Services.DepartmentServices
         }
 
 
-        public async Task<bool> AddItem(Department item)
+        public async Task<bool> AddItem(DepartmentVM model)
         {
             try
             {
+
+                var newDepartment = new Department
+                {
+                    name = model.name
+                };
                
 
 
-                await _context.Departments.AddAsync(item);
+                await _context.Departments.AddAsync(newDepartment);
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -63,21 +69,21 @@ namespace TrainingForDatabase.Services.DepartmentServices
 
          public async Task<Department> GetItemById(int id)
          {
-            var item = await _context.Departments.FindAsync(id);
+             var item = await _context.Departments.FindAsync(id);
 
             
             return item;
 
         }
 
-        public async Task<bool> Update(Department model)
+        public async Task<bool> Update(DepartmentVM model)
         {
             try
             {
+
                 var data = await _context.Departments.FindAsync(model.Id);
 
                 data.name = model.name;
-                data.Id = model.Id;
                 
 
 
@@ -93,6 +99,6 @@ namespace TrainingForDatabase.Services.DepartmentServices
 
         }
 
-        
+
     }
 } 

@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using TrainingForDatabase.Data;
+using TrainingForDatabase.ItemVM;
 using TrainingForDatabase.Models;
 using TrainingForDatabase.services;
 using TrainingForDatabase.Services.DepartmentServices;
+using TrainingForDatabase.ViewModels.Department;
 
 namespace TrainingForDatabase.Controllers
 {
@@ -81,7 +83,7 @@ namespace TrainingForDatabase.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update([FromBody] Department item)
+        public async Task<IActionResult> Update([FromBody] DepartmentVM item)
         {
 
             var res = await _department_service.Update(item);
@@ -94,6 +96,29 @@ namespace TrainingForDatabase.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        public async Task<IActionResult> AddItemPage()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddItem([FromBody] DepartmentVM model)
+        {
+
+            var x = await _department_service.AddItem(model);
+
+            if (x)
+            {
+                return Ok("success");
+            }
+            else
+            {
+                return BadRequest();
+            }
+
         }
 
     }
