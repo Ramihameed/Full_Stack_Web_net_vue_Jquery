@@ -9,9 +9,10 @@
             </div>
             <input v-model="newItem.description" type="text" placeholder="Description" class="form-control form-control-lg w-100" required />
             <input v-model="newItem.price" type="number" placeholder="Price" class="form-control form-control-lg w-100"  required />
+            <input v-model="newItem.departmentid" type="number" placeholder="departmentId" class="form-control form-control-lg w-100" required />
             
             <button type="button" v-on:click="addItemReal()" class="btn btn-primary">Add Item</button>
-            <button type="button" v-on:click="returnPage()" class="btn btn-secondary">Return to Index</button>
+            <button type="button" v-on:click="returnPage()" class="btn btn-secondary">Return to Items list</button>
         </form>
     </div>
 </div>
@@ -24,7 +25,8 @@
           newItem: {
             name: '',
             description: '',
-            price: 0
+            price: 0,
+            departmentid : 0
             
           },
           validationErrors: {
@@ -39,7 +41,8 @@
           const newItem = {
             name: this.newItem.name,
             description: this.newItem.description,
-            price: this.newItem.price
+            price: this.newItem.price,
+            departmentid : this.newItem.departmentid
           };
 
           axios.post('/Item/AddItem', newItem)

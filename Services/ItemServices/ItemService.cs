@@ -33,6 +33,7 @@ namespace TrainingForDatabase.services
                         Id = i.Id,
                         name = i.name,
                         description = i.description != null ? i.description : "",
+                        Departmentname=i.Department.name,
                         price = i.price //issue
                         //DepartmentId = i.DepartmentId,
                         //Department = i.Department,
@@ -72,7 +73,7 @@ namespace TrainingForDatabase.services
                     name = item.name,
                     description = item.description,
                     price = item.price,
-                    Id = item.Id,
+                    DepartmentId = item.DepartmentId
 
                 };
 
@@ -99,6 +100,7 @@ namespace TrainingForDatabase.services
                 description = item.description,
                 price = item.price,
                 DepartmentId = item.DepartmentId
+                //Departmentname = item.Department.name
             };
             return newItem;
 

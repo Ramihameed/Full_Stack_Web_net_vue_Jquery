@@ -1,4 +1,5 @@
-﻿<div class="container mt-5">
+﻿
+<div class="container mt-5">
     <div class="table table-bordered">
         <thead>
             <tr>
@@ -24,10 +25,13 @@
         </div>
 
 
-       
+      @*   <div class="mb-3">
+            <label for="departmentname" class="form-label border-3">DepartmentName</label>
+            <input v-model="item.departmentname" type="text" id="departmentname" class="form-control border-3" required />
+        </div>
+ *@
 
-
-        <div class="form-group">
+       @*  <div class="form-group">
             <label for="department">Select Department</label>
             <select v-model="selectedDepartment" id="department" class="form-control">
                 <option disabled value="">Select a department</option>
@@ -35,7 +39,7 @@
                     {{ item.name }}
                 </option>
             </select>
-        </div>
+        </div> *@
 
         <button type="button" class="btn btn-primary" v-on:click="updateItem(item.id)">Update Item</button>
     </div>
@@ -51,8 +55,8 @@
                 id : 0,
                 name: '',
                 description: '',
-                price: 0,
-                departmentname: ''
+                price: 0
+                // departmentname: ''
             },
         },
         beforeMount() {
@@ -79,8 +83,11 @@
                         console.error('Error fetching departments:', error);
                     });
             },
-            updateItem(id) {
-                this.item.Departmentname = this.selectedDepartment;
+            updateItem(itemId) {
+
+                this.item.id = itemId;
+                
+                // this.item.departmentname = this.selectedDepartment;
                 axios.post('/Item/Update', this.item)
                     .then(response => {
                         console.log(response);
