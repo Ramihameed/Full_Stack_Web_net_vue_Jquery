@@ -7,7 +7,6 @@ using TrainingForDatabase.ItemVM;
 using TrainingForDatabase.ViewModels.Item;
 using System.Linq.Dynamic.Core;
 
-
 namespace TrainingForDatabase.services
 {
     public class ItemService : IItemService

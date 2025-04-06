@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using TrainingForDatabase.Data;
 using TrainingForDatabase.ItemVM;
 using TrainingForDatabase.Models;
@@ -9,6 +10,7 @@ namespace TrainingForDatabase.Services.DepartmentServices
 {
     public class DepartmentService : IDepartmentService
     {
+
 
         private readonly ApplicationDbContext _context;
 

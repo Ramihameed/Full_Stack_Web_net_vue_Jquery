@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using TrainingForDatabase.Data;
 using TrainingForDatabase.services;
 using TrainingForDatabase.Services.DepartmentServices;
+using TrainingForDatabase.Services.MediaServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -18,6 +20,7 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<IMediaService, MediaService>();
 
 var app = builder.Build();
 

@@ -12,5 +12,7 @@ namespace TrainingForDatabase.Models
         public string name { get; set; }
 
         public ICollection<Item> items { get; set; }
+
+        public Media Media { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingForDatabase.Data;
 
@@ -11,9 +12,11 @@ using TrainingForDatabase.Data;
 namespace TrainingForDatabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250403115924_mediaadded")]
+    partial class mediaadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -328,7 +331,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 1",
                             name = "Item 1",
-                            price = 818
+                            price = 574
                         },
                         new
                         {
@@ -336,7 +339,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 2,
                             description = "Description 2",
                             name = "Item 2",
-                            price = 61
+                            price = 16
                         },
                         new
                         {
@@ -344,7 +347,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 3,
                             description = "Description 3",
                             name = "Item 3",
-                            price = 257
+                            price = 96
                         },
                         new
                         {
@@ -352,7 +355,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 4,
                             description = "Description 4",
                             name = "Item 4",
-                            price = 746
+                            price = 855
                         },
                         new
                         {
@@ -360,7 +363,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 5,
                             description = "Description 5",
                             name = "Item 5",
-                            price = 334
+                            price = 102
                         },
                         new
                         {
@@ -368,7 +371,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 6",
                             name = "Item 6",
-                            price = 353
+                            price = 324
                         },
                         new
                         {
@@ -376,7 +379,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 2,
                             description = "Description 7",
                             name = "Item 7",
-                            price = 378
+                            price = 860
                         },
                         new
                         {
@@ -384,7 +387,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 3,
                             description = "Description 8",
                             name = "Item 8",
-                            price = 636
+                            price = 883
                         },
                         new
                         {
@@ -392,7 +395,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 4,
                             description = "Description 9",
                             name = "Item 9",
-                            price = 423
+                            price = 627
                         },
                         new
                         {
@@ -400,7 +403,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 5,
                             description = "Description 10",
                             name = "Item 10",
-                            price = 449
+                            price = 94
                         },
                         new
                         {
@@ -408,7 +411,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 6,
                             description = "Description 11",
                             name = "Item 11",
-                            price = 700
+                            price = 64
                         },
                         new
                         {
@@ -416,7 +419,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 7,
                             description = "Description 12",
                             name = "Item 12",
-                            price = 920
+                            price = 939
                         },
                         new
                         {
@@ -424,7 +427,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 8,
                             description = "Description 13",
                             name = "Item 13",
-                            price = 373
+                            price = 722
                         },
                         new
                         {
@@ -432,7 +435,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 9,
                             description = "Description 14",
                             name = "Item 14",
-                            price = 183
+                            price = 224
                         },
                         new
                         {
@@ -440,7 +443,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 10,
                             description = "Description 15",
                             name = "Item 15",
-                            price = 322
+                            price = 871
                         },
                         new
                         {
@@ -448,7 +451,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 16",
                             name = "Item 16",
-                            price = 285
+                            price = 966
                         },
                         new
                         {
@@ -456,7 +459,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 2,
                             description = "Description 17",
                             name = "Item 17",
-                            price = 519
+                            price = 139
                         },
                         new
                         {
@@ -464,7 +467,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 3,
                             description = "Description 18",
                             name = "Item 18",
-                            price = 609
+                            price = 713
                         },
                         new
                         {
@@ -472,7 +475,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 4,
                             description = "Description 19",
                             name = "Item 19",
-                            price = 395
+                            price = 100
                         },
                         new
                         {
@@ -480,7 +483,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 5,
                             description = "Description 20",
                             name = "Item 20",
-                            price = 606
+                            price = 14
                         },
                         new
                         {
@@ -488,7 +491,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 6,
                             description = "Description 21",
                             name = "Item 21",
-                            price = 407
+                            price = 752
                         },
                         new
                         {
@@ -496,7 +499,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 7,
                             description = "Description 22",
                             name = "Item 22",
-                            price = 498
+                            price = 140
                         },
                         new
                         {
@@ -504,7 +507,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 8,
                             description = "Description 23",
                             name = "Item 23",
-                            price = 28
+                            price = 691
                         },
                         new
                         {
@@ -512,7 +515,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 9,
                             description = "Description 24",
                             name = "Item 24",
-                            price = 218
+                            price = 481
                         },
                         new
                         {
@@ -520,7 +523,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 10,
                             description = "Description 25",
                             name = "Item 25",
-                            price = 389
+                            price = 128
                         },
                         new
                         {
@@ -528,7 +531,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 26",
                             name = "Item 26",
-                            price = 333
+                            price = 286
                         },
                         new
                         {
@@ -536,7 +539,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 2,
                             description = "Description 27",
                             name = "Item 27",
-                            price = 555
+                            price = 9
                         },
                         new
                         {
@@ -544,7 +547,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 3,
                             description = "Description 28",
                             name = "Item 28",
-                            price = 861
+                            price = 538
                         },
                         new
                         {
@@ -552,7 +555,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 4,
                             description = "Description 29",
                             name = "Item 29",
-                            price = 309
+                            price = 414
                         },
                         new
                         {
@@ -560,7 +563,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 5,
                             description = "Description 30",
                             name = "Item 30",
-                            price = 58
+                            price = 545
                         },
                         new
                         {
@@ -568,7 +571,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 6,
                             description = "Description 31",
                             name = "Item 31",
-                            price = 318
+                            price = 193
                         },
                         new
                         {
@@ -576,7 +579,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 7,
                             description = "Description 32",
                             name = "Item 32",
-                            price = 543
+                            price = 746
                         },
                         new
                         {
@@ -584,7 +587,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 8,
                             description = "Description 33",
                             name = "Item 33",
-                            price = 218
+                            price = 436
                         },
                         new
                         {
@@ -592,7 +595,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 9,
                             description = "Description 34",
                             name = "Item 34",
-                            price = 370
+                            price = 60
                         },
                         new
                         {
@@ -600,7 +603,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 10,
                             description = "Description 35",
                             name = "Item 35",
-                            price = 415
+                            price = 988
                         },
                         new
                         {
@@ -608,7 +611,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 36",
                             name = "Item 36",
-                            price = 679
+                            price = 315
                         },
                         new
                         {
@@ -616,7 +619,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 2,
                             description = "Description 37",
                             name = "Item 37",
-                            price = 562
+                            price = 846
                         },
                         new
                         {
@@ -624,7 +627,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 3,
                             description = "Description 38",
                             name = "Item 38",
-                            price = 769
+                            price = 744
                         },
                         new
                         {
@@ -632,7 +635,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 4,
                             description = "Description 39",
                             name = "Item 39",
-                            price = 839
+                            price = 875
                         },
                         new
                         {
@@ -640,7 +643,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 5,
                             description = "Description 40",
                             name = "Item 40",
-                            price = 337
+                            price = 684
                         },
                         new
                         {
@@ -648,7 +651,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 6,
                             description = "Description 41",
                             name = "Item 41",
-                            price = 542
+                            price = 604
                         },
                         new
                         {
@@ -656,7 +659,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 7,
                             description = "Description 42",
                             name = "Item 42",
-                            price = 990
+                            price = 527
                         },
                         new
                         {
@@ -664,7 +667,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 8,
                             description = "Description 43",
                             name = "Item 43",
-                            price = 73
+                            price = 997
                         },
                         new
                         {
@@ -672,7 +675,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 9,
                             description = "Description 44",
                             name = "Item 44",
-                            price = 528
+                            price = 819
                         },
                         new
                         {
@@ -680,7 +683,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 10,
                             description = "Description 45",
                             name = "Item 45",
-                            price = 506
+                            price = 663
                         },
                         new
                         {
@@ -688,7 +691,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 1,
                             description = "Description 46",
                             name = "Item 46",
-                            price = 18
+                            price = 618
                         },
                         new
                         {
@@ -696,7 +699,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 2,
                             description = "Description 47",
                             name = "Item 47",
-                            price = 390
+                            price = 239
                         },
                         new
                         {
@@ -704,7 +707,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 3,
                             description = "Description 48",
                             name = "Item 48",
-                            price = 450
+                            price = 901
                         },
                         new
                         {
@@ -712,7 +715,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 4,
                             description = "Description 49",
                             name = "Item 49",
-                            price = 993
+                            price = 741
                         },
                         new
                         {
@@ -720,7 +723,7 @@ namespace TrainingForDatabase.Migrations
                             DepartmentId = 5,
                             description = "Description 50",
                             name = "Item 50",
-                            price = 329
+                            price = 74
                         });
                 });
 
@@ -735,7 +738,7 @@ namespace TrainingForDatabase.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("FilePath")
+                    b.Property<string>("FileName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

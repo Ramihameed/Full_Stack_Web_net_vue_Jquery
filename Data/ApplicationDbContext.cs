@@ -14,6 +14,8 @@ namespace TrainingForDatabase.Data
         public DbSet<Item> Items { get; set; }
         public DbSet<Department> Departments { get; set; }
 
+        public DbSet<Media> Media { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
