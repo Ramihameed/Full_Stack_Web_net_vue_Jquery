@@ -14,6 +14,7 @@ namespace TrainingForDatabase.ViewModels.MediaVM
 
         // Foreign Key to Department
         public int DepartmentId { get; set; }
+
         public string DepartmentName { get; set; }
 
         // Navigation property to Department

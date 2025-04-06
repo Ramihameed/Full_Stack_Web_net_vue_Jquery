@@ -29,8 +29,10 @@ namespace TrainingForDatabase.Services.MediaServices
             {
                 Id = media.Id,
                 DepartmentId = media.DepartmentId,
-                FilePath = media.FilePath
-                //DepartmentName = media.Department.name
+                FilePath = media.FilePath,
+                DepartmentName = media.Department.name
+
+
             }).ToList();
 
             return mediaVMList;
