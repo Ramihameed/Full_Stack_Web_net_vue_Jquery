@@ -1,4 +1,5 @@
-﻿using TrainingForDatabase.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using TrainingForDatabase.Data;
 using TrainingForDatabase.Models;
 using TrainingForDatabase.ViewModels.MediaVM;
 
@@ -16,6 +17,26 @@ namespace TrainingForDatabase.Services.MediaServices
             _context = context;
             _hostEnvironment = hostEnvironment;
         }
+
+        public async Task<List<MediaVM>> List()
+        {
+            var mediaList = await _context.Media
+                                       .Include(m => m.Department)
+                                       .ToListAsync();
+
+            // Map Media to MediaVM
+            var mediaVMList = mediaList.Select(media => new MediaVM
+            {
+                Id = media.Id,
+                DepartmentId = media.DepartmentId,
+                FilePath = media.FilePath
+                //DepartmentName = media.Department.name
+            }).ToList();
+
+            return mediaVMList;
+        }
+
+
         public async Task<bool> Upload(MediaVM model)
         {
             if (model.File != null && model.File.Length > 0)

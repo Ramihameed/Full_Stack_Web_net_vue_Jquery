@@ -19,10 +19,13 @@ namespace TrainingForDatabase.Controllers
         public IActionResult Index()
         {
             return View();
+        } 
+        public IActionResult List()
+        {
+            return View();
         }
 
         [HttpPost]
-        [Route("Media/Upload")]
         public async Task<IActionResult> Upload([FromForm] MediaVM model)
         {
             if (model.File != null && model.File.Length > 0)
@@ -51,5 +54,20 @@ namespace TrainingForDatabase.Controllers
 
             return BadRequest(new { message = "No file uploaded." });
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetMediaList()
+        {
+            var mediaVMList = await _mediaService.List();
+
+            foreach (var media in mediaVMList)
+            {
+                media.FilePath = media.FilePath?.Replace("\\", "/");
+            }
+
+            return Ok(mediaVMList);  
+        }
+
     }
 }

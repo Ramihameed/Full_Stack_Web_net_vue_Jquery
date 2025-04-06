@@ -37,7 +37,7 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles();  // This line is important for serving images
 
 app.UseRouting();
 

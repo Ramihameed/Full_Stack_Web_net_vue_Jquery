@@ -1,0 +1,65 @@
+﻿
+    <div id="App">
+        <h1>Media List</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>DepartmentId</th>
+                    <th>Image</th>
+                    <th>Path</th>
+         @*            <th>Department</th> *@
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="media in mediaList" :key="media.id">
+                    <td>{{ media.departmentId || 'No Department' }}</td>
+                    <td>
+                    <img v-if="media.filePath" :src="getImageUrl(media.filePath)" style="width: 93px;" />
+                        <span v-else>No Image</span>
+                    </td>
+                    <td>
+                        {{media.filePath}}
+                    </td>
+                  @*   <td>
+                    {{media.DepartmentName}}
+                    </td> *@
+                </tr>
+            </tbody>
+        </table>
+    </div>
+<script>
+    var media_app = new Vue({
+        el: '#App',
+        data: {
+            mediaList: [] 
+        },
+        methods: {
+            async load() {
+                axios.get("/Media/GetMediaList")
+                    .then(response => {
+                        debugger
+                        this.mediaList = response.data;  
+                        console.log(this.mediaList)
+                    })
+                    .catch(error => {
+                        console.error("Error fetching media:", error);
+                    });
+            },
+            getFilePath(filePath) {
+
+              return `~/images/${filePath.replace(/\\/g, '/')}`;
+            },
+            getImageUrl(imgUrl) {
+                if (!imgUrl) return '';
+
+                imgUrl = imgUrl.replace(/^~\//, '');
+
+                return `${window.location.origin}/${imgUrl}`;
+            }
+        },
+        async beforeMount() {
+             await this.load();
+        },
+    });
+</script>

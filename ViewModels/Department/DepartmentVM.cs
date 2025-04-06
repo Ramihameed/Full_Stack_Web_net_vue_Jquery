@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using TrainingForDatabase.ItemVM;
+using TrainingForDatabase.Models;
 namespace TrainingForDatabase.ViewModels.Department
 {
     public class DepartmentVM
@@ -10,6 +11,9 @@ namespace TrainingForDatabase.ViewModels.Department
             public string name { get; set; }
 
             public ICollection<itemVM> items { get; set; }
-        
+
+            public Media Media { get; set; }
+
+
     }
 }
