@@ -75,7 +75,7 @@ namespace TrainingForDatabase.Controllers
             {
                 return BadRequest();
             } 
-        }
+        } 
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
