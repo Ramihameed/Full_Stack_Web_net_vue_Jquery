@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Course Enrollment</title>
+</head>
+<body>
+
+    <div id="app" class="container mt-5">
+
+        <h2 class="mb-4">Enroll Student in Course</h2>
+
+        <div class="row">
+            <!-- Column 1: Students -->
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="student">Student:</label>
+                    <select v-model="newRelation.studentId" id="student" class="form-control" required>
+                        <option v-for="student in students" :key="student.studentId" :value="student.studentId">
+                            {{ student.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Column 2: Courses -->
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="course">Course:</label>
+                    <select v-model="newRelation.courseId" id="course" class="form-control" required>
+                        <option v-for="course in courses" :key="course.courseId" :value="course.courseId">
+                            {{ course.courseName }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Column 3: Enroll and Result -->
+            <div class="col-md-4">
+                <button class="btn btn-primary" type="button" v-on:click="enroll()">Enroll</button>
+
+                <!-- Display selected student and course after enrollment -->
+                <div v-if="enrolledStudent && enrolledCourse" class="mt-4">
+                    <h5>Enrolled:</h5>
+                    <p><strong>Student:</strong> {{ enrolledStudent.name }}</p>
+                    <p><strong>Course:</strong> {{ enrolledCourse.courseName }}</p>
+                    <button class="btn btn-info mt-2" v-on:click="showMoreInfo()">Show More Info</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for showing enrolled students in the course -->
+        <div v-if="showInfoModal" class="modal fade show" tabindex="-1" role="dialog" style="display: block;" aria-hidden="false">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Students Enrolled in {{ enrolledCourse.courseName }}</h5>
+                        <button type="button" class="close" v-on:click="closeModal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li v-for="student in enrolledCourseStudents" :key="student.studentId">
+                                {{ student.name }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                newRelation: {
+                    studentId: 0,
+                    courseId: 0
+                },
+                students: [],
+                courses: [],
+                enrolledStudent: null,
+                enrolledCourse: null,
+                enrolledCourseStudents: [],
+                showInfoModal: false
+            },
+            beforeMount() {
+                this.fetchData();
+            },
+            methods: {
+                fetchData() {
+                    // Fetch students
+                    axios.get('/Student/GetAllStudents')
+                        .then(response => {
+                            this.students = response.data;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching students:', error);
+                        });
+
+                    // Fetch courses
+                    axios.get('/Course/GetAllCourses')
+                        .then(response => {
+                            this.courses = response.data;
+                        })
+                        .catch(error => {
+                            console.error('Error fetching courses:', error);
+                        });
+                },
+                async enroll() {
+                    try {
+                        const response = await axios.post('/StudentCourse/Create', this.newRelation);
+
+                        if (response.status === 200) {
+                            this.enrolledStudent = this.students.find(student => student.studentId === this.newRelation.studentId);
+                            this.enrolledCourse = this.courses.find(course => course.courseId === this.newRelation.courseId);
+                            alert('Student enrolled successfully');
+                        }
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        alert('An error occurred. Please try again.');
+                    }
+                },
+                async showMoreInfo() {
+                    try {
+                        const response = await axios.get(`/Course/GetStudentsInCourse/${this.enrolledCourse.courseId}`);
+                        this.enrolledCourseStudents = response.data;
+                        this.showInfoModal = true;
+                    } catch (error) {
+                        console.error('Error fetching enrolled students:', error);
+                        alert('Could not load students for this course.');
+                    }
+                },
+                closeModal() {
+                    this.showInfoModal = false;
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

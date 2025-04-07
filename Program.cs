@@ -6,6 +6,7 @@ using TrainingForDatabase.Services.DepartmentServices;
 using TrainingForDatabase.Services.MediaServices;
 using TrainingForDatabase.Services.StudentServices;
 using TrainingForDatabase.Services.CourseServices;
+using TrainingForDatabase.Services.StudentCourseServices;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,7 @@ builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IMediaService, MediaService>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<IStudentCourseService, StudentCourseService>();
 
 
 

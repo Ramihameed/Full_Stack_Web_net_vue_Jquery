@@ -40,5 +40,22 @@ namespace TrainingForDatabase.Controllers
             }
 
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetStudentsInCourse(int id)
+        {
+
+            var x = await _course_service.GetStudentsInCourse( id);
+
+            if (x != null)
+            {
+                return Ok(x);
+            }
+            else
+            {
+                return BadRequest("err");
+            }
+
+        }
     }
 }

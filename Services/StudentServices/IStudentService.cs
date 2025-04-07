@@ -6,7 +6,7 @@ namespace TrainingForDatabase.Services.StudentServices
     public interface IStudentService
     {
 
-        Task<List<StudentViewModel>> GetAllStudents();
+        Task<List<StudentVM>> GetAllStudents();
 
     }
 }

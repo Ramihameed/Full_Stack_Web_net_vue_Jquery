@@ -17,14 +17,14 @@ namespace TrainingForDatabase.Services.StudentServices
             _context = context;
         }
 
-        public async Task<List<StudentViewModel>> GetAllStudents()
+        public async Task<List<StudentVM>> GetAllStudents()
         {
             var studentList = await _context.Students
                                             .Include(s => s.StudentCourses)
                                             .ThenInclude(x => x.Course)
                                             .ToListAsync();
 
-            var studentViewModel = studentList.Select(student => new StudentViewModel
+            var studentViewModel = studentList.Select(student => new StudentVM
             {
                 StudentId = student.StudentId,
                 Name = student.Name,

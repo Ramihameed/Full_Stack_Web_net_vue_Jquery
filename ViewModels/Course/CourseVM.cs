@@ -3,7 +3,7 @@ using TrainingForDatabase.Models;
 
 namespace TrainingForDatabase.ViewModels.Course
 {
-    public class CourseViewModel
+    public class CourseVM
     {
 
 
@@ -13,6 +13,6 @@ namespace TrainingForDatabase.ViewModels.Course
         public string? Students { get; set; }
 
         // Navigation property
-        public ICollection<StudentCourses> StudentCourses { get; set; }
+        public ICollection<TrainingForDatabase.Models.StudentCourses> StudentCourses { get; set; }
     }
 }
