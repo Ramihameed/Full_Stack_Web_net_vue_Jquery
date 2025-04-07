@@ -74,7 +74,7 @@ namespace TrainingForDatabase.Controllers
             else
             {
                 return BadRequest();
-            }
+            } 
         }
 
         [HttpGet]
