@@ -16,6 +16,8 @@ namespace TrainingForDatabase.Services.StudentCourseServices
         {
             _context = context;
         }
+
+
         public async Task<bool> Create(StudentCoursesVM model)
         {
             try

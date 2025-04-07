@@ -10,6 +10,9 @@ namespace TrainingForDatabase.Services.CourseServices
 
         Task<List<StudentVM>> GetStudentsInCourse(int CourseId);
 
+        public Task<List<CourseVM>> updateCoursesWithStudents();
+
+
 
     }
 }

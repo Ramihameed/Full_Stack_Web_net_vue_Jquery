@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TrainingForDatabase.Data;
+using TrainingForDatabase.Models;
 using TrainingForDatabase.ViewModels.Course;
 using TrainingForDatabase.ViewModels.Student;
 
@@ -32,6 +33,7 @@ namespace TrainingForDatabase.Services.CourseServices
 
             return studentViewModel;
         }
+
         public async Task<List<StudentVM>> GetStudentsInCourse(int courseId)
         {
 
@@ -50,6 +52,30 @@ namespace TrainingForDatabase.Services.CourseServices
         .ToListAsync(); // Execute asynchronously
 
             return studentsInCourse;
+        }
+
+        public async Task<List<CourseVM>> updateCoursesWithStudents()
+        {
+
+
+            var coursesWithStudents = await _context.Courses
+    .Include(c => c.StudentCourses)        
+    .ThenInclude(sc => sc.Student)       
+    .Where(c => c.StudentCourses.Any())    
+    .ToListAsync();
+
+
+
+            var Result = coursesWithStudents.Select(c => new CourseVM
+            {
+                CourseId = c.CourseId,
+                CourseName = c.CourseName,
+
+                Students = string.Join(", ", c.StudentCourses.Select(x => x.Student.Name) )
+            }).ToList();
+
+
+            return Result;
         }
 
     }

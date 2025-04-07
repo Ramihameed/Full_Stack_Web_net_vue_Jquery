@@ -9,14 +9,14 @@
 
     <div id="app" class="container mt-5">
 
-        <h2 class="mb-4">Enroll Student in Course</h2>
+        <h2 class="mb-4 text-center">Enroll Student in Course</h2>
 
         <div class="row">
             <!-- Column 1: Students -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="student">Student:</label>
-                    <select v-model="newRelation.studentId" id="student" class="form-control" required>
+                    <select v-model="newRelation.studentId" id="student" class="form-control form-control-lg" required>
                         <option v-for="student in students" :key="student.studentId" :value="student.studentId">
                             {{ student.name }}
                         </option>
@@ -25,10 +25,10 @@
             </div>
 
             <!-- Column 2: Courses -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="course">Course:</label>
-                    <select v-model="newRelation.courseId" id="course" class="form-control" required>
+                    <select v-model="newRelation.courseId" id="course" class="form-control form-control-lg" required>
                         <option v-for="course in courses" :key="course.courseId" :value="course.courseId">
                             {{ course.courseName }}
                         </option>
@@ -36,21 +36,41 @@
                 </div>
             </div>
 
-            <!-- Column 3: Enroll and Result -->
-            <div class="col-md-4">
-                <button class="btn btn-primary" type="button" v-on:click="enroll()">Enroll</button>
+            <!-- Column 3: Courses with Enrolled Students -->
+            <div class="col-md-6">
+                <h5 class="mb-3">Courses with Enrolled Students</h5>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Course Name</th>
+                                <th>Enrolled Students</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="course in coursesWithStudents" :key="course.courseId">
+                                <td><strong>{{ course.courseName }}</strong></td>
+                                <td>{{ course.students }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-                <!-- Display selected student and course after enrollment -->
+            <!-- Enroll Button and Enrolled Student Details -->
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-block mb-4" type="button" v-on:click="enroll()">Enroll</button>
+
                 <div v-if="enrolledStudent && enrolledCourse" class="mt-4">
                     <h5>Enrolled:</h5>
                     <p><strong>Student:</strong> {{ enrolledStudent.name }}</p>
                     <p><strong>Course:</strong> {{ enrolledCourse.courseName }}</p>
-                    <button class="btn btn-info mt-2" v-on:click="showMoreInfo()">Show More Info</button>
+                    <button class="btn btn-info btn-block mt-2" v-on:click="showMoreInfo()">Show More Info</button>
                 </div>
             </div>
         </div>
 
-        <!-- Modal for showing enrolled students in the course -->
+        <!-- Modal: Show More Info -->
         <div v-if="showInfoModal" class="modal fade show" tabindex="-1" role="dialog" style="display: block;" aria-hidden="false">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -61,8 +81,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <ul>
-                            <li v-for="student in enrolledCourseStudents" :key="student.studentId">
+                        <ul class="list-group">
+                            <li v-for="student in enrolledCourseStudents" :key="student.studentId" class="list-group-item">
                                 {{ student.name }}
                             </li>
                         </ul>
@@ -73,7 +93,6 @@
 
     </div>
 
-  
 
 
     <script>
@@ -89,12 +108,25 @@
                 enrolledStudent: null,
                 enrolledCourse: null,
                 enrolledCourseStudents: [],
-                showInfoModal: false
+                showInfoModal: false,
+                coursesWithStudents: [] 
+
             },
             beforeMount() {
                 this.fetchData();
+                this.updateCoursesWithStudents();
             },
             methods: {
+            async updateCoursesWithStudents() {
+                try {
+                    const response = await axios.get('Course/updateCoursesWithStudents');
+                    this.coursesWithStudents = response.data;
+                    console.log(response.data);
+                } catch (error) {
+                    console.error('Error fetching courses with students:', error);
+                    alert('Could not load courses with students.');
+                }
+            },
                 fetchData() {
                     // Fetch students
                     axios.get('/Student/GetAllStudents')
@@ -122,6 +154,7 @@
                             this.enrolledStudent = this.students.find(student => student.studentId === this.newRelation.studentId);
                             this.enrolledCourse = this.courses.find(course => course.courseId === this.newRelation.courseId);
                             alert('Student enrolled successfully');
+                            this.updateCoursesWithStudents();
                         }
                     } catch (error) {
                         console.error('Error submitting form:', error);

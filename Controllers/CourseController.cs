@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TrainingForDatabase.Data;
 using TrainingForDatabase.Services.CourseServices;
 using TrainingForDatabase.Services.StudentServices;
+using TrainingForDatabase.ViewModels.Course;
 
 namespace TrainingForDatabase.Controllers
 {
@@ -56,6 +58,23 @@ namespace TrainingForDatabase.Controllers
                 return BadRequest("err");
             }
 
+        }
+
+        [HttpGet] 
+        public async Task<IActionResult> updateCoursesWithStudents()
+        {
+
+
+            var ListOfCoursesWithStudents =  await _course_service.updateCoursesWithStudents();
+
+            if (ListOfCoursesWithStudents != null)
+            {
+                return Ok(ListOfCoursesWithStudents);
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }
