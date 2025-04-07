@@ -4,6 +4,9 @@ using TrainingForDatabase.Data;
 using TrainingForDatabase.services;
 using TrainingForDatabase.Services.DepartmentServices;
 using TrainingForDatabase.Services.MediaServices;
+using TrainingForDatabase.Services.StudentServices;
+using TrainingForDatabase.Services.CourseServices;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +24,10 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<IMediaService, MediaService>();
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ICourseService, CourseService>();
+
+
 
 var app = builder.Build();
 

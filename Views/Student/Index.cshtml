@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Students";
+}
+<div id="app">
+    <div v-if="loading">
+        Loading items...
+    </div>
+    <div v-else>
+        <h2>Students List</h2>
+
+        @* <button type="button" v-on:click="addItem()" class="btn btn-lg btn-outline-success w-100 shadow-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Add New Item">
+            <i class="bi bi-plus-circle"></i> Add New
+        </button> *@
+
+
+        <table class="table table-striped table-bordered table-hover shadow-sm">
+            <thead class="table-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>StudentCourses</th>
+@*                     <th class="text-center">Actions</th>
+ *@                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="item in students" :key="item.id">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.course }}</td>
+
+                    @* <td class="text-center">
+                        <div class="btn-group" role="group" aria-label="Actions">
+                            <!-- Edit Button with Modern Styling -->
+                            <button type="button" v-on:click="EditItem(item.id)" class="btn btn-outline-primary btn-sm shadow-sm w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Item">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </button>
+
+                            <!-- Delete Button with Modern Styling -->
+                            <button type="button" v-on:click="Delete(item.id)" class="btn btn-outline-danger btn-sm shadow-sm ms-2 w-100" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Item">
+                                <i class="bi bi-trash"></i> Delete
+                            </button>
+                        </div>
+                    </td> *@
+
+                </tr>
+            </tbody>
+        </table>
+
+        <hr />
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            students: [],
+            student: {
+                id: 0,
+                name: '',
+                course : ''
+            },
+            loading: true
+        },
+        beforeMount() {
+            this.fetchitems();
+        },
+        methods: {
+            fetchitems() {
+                axios.get('/Student/GetAllStudents')
+                    .then(response => {
+                        this.students = response.data;
+                        console.log(response);
+                        this.loading = false;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching items:', error);
+                        this.loading = false;
+                    });
+            }
+            // },
+            // addItem() {
+            //     window.location.href = '/Department/AddItemPage/';
+            // },
+            // EditItem(itemId) {
+            //     window.location.href = `/Department/Edit/${itemId}`;
+            // },
+            // Delete(itemId) {
+            //     axios.delete(`/Department/Delete/${itemId}`)
+            //         .then(response => {
+            //             this.fetchitems();
+            //         })
+            //         .catch(error => {
+            //             console.error('Error deleting item:', error);
+            //         });
+            // }
+        }
+    });
+</script>

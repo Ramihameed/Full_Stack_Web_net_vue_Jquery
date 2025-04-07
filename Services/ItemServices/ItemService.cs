@@ -23,10 +23,12 @@ namespace TrainingForDatabase.services
         {
             try
             {
-                int recordsTotal = await _context.Items.CountAsync();
+                int recordsTotal = await _context.Items.Where(x=> !string.IsNullOrEmpty(SearchValue)? x.name.Trim().ToLower().Contains(SearchValue.Trim().ToLower()) :true).CountAsync();
 
                 var models = _context.Items.Include(i => i.Department)
                     .AsEnumerable<Models.Item>()
+                    .Where(x => !string.IsNullOrEmpty(SearchValue) ? x.name.Trim().ToLower().Contains(SearchValue.Trim().ToLower()) : true)
+
                     .Select(i => new itemVM
                     {
                         Id = i.Id,

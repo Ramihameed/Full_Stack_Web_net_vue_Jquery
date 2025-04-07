@@ -16,8 +16,26 @@ namespace TrainingForDatabase.Data
 
         public DbSet<Media> Media { get; set; }
 
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<StudentCourses> StudentCourses { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<StudentCourses>()
+               .HasKey(sc => new { sc.StudentId, sc.CourseId });
+
+            modelBuilder.Entity<StudentCourses>()
+                .HasOne(sc => sc.Student)
+                .WithMany(s => s.StudentCourses)
+                .HasForeignKey(sc => sc.StudentId);
+
+            modelBuilder.Entity<StudentCourses>()
+                .HasOne(sc => sc.Course)
+                .WithMany(c => c.StudentCourses)
+                .HasForeignKey(sc => sc.CourseId);
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Department>().HasData(
@@ -84,6 +102,29 @@ namespace TrainingForDatabase.Data
                 new Item { Id = 48, name = "Item 48", description = "Description 48", price = new Random().Next(1, 1000), DepartmentId = 3 },
                 new Item { Id = 49, name = "Item 49", description = "Description 49", price = new Random().Next(1, 1000), DepartmentId = 4 },
                 new Item { Id = 50, name = "Item 50", description = "Description 50", price = new Random().Next(1, 1000), DepartmentId = 5 }
+            );
+
+
+            modelBuilder.Entity<Student>().HasData(
+       new Student { StudentId = 1, Name = "John Doe" },
+       new Student { StudentId = 2, Name = "Jane Smith" },
+       new Student { StudentId = 3, Name = "David Johnson" }
+   );
+
+            // Seed data for Courses
+            modelBuilder.Entity<Course>().HasData(
+                new Course { CourseId = 1, CourseName = "Mathematics 101" },
+                new Course { CourseId = 2, CourseName = "History 202" },
+                new Course { CourseId = 3, CourseName = "Computer Science 303" }
+            );
+
+            // Create relationships using navigation properties
+            modelBuilder.Entity<StudentCourses>().HasData(
+                new StudentCourses { StudentId = 1, CourseId = 1 }, // John Doe takes Mathematics 101
+                new StudentCourses { StudentId = 1, CourseId = 2 }, // John Doe takes History 202
+                new StudentCourses { StudentId = 2, CourseId = 3 }, // Jane Smith takes Computer Science 303
+                new StudentCourses { StudentId = 3, CourseId = 1 }, // David Johnson takes Mathematics 101
+                new StudentCourses { StudentId = 3, CourseId = 3 }  // David Johnson takes Computer Science 303
             );
 
 
