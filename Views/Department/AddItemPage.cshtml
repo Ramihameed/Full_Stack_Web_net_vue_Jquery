@@ -2,7 +2,6 @@
     <h3>Add New Item</h3>
     <div class="container mt-3"></div>
     <div class="border rounded p-4 shadow-lg" style="border-color: #007bff; border-width: 4px;">
-        <form class="form-control">
             <input v-model="newDepartment.name" type="text" placeholder="Name" class="form-control form-control-lg w-100" v-on:input="validateName()" required />
             <div v-if="validationErrors.TextError" class="text-danger">
                 {{ validationErrors.TextError }}
@@ -12,7 +11,6 @@
 
             <button type="button" v-on:click="addItemReal()" class="btn btn-primary">Add Item</button>
             <button type="button" v-on:click="returnPage()" class="btn btn-secondary">Return to Index</button>
-        </form>
     </div>
 </div>
 

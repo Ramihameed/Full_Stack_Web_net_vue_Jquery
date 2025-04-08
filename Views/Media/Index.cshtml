@@ -2,9 +2,11 @@
     ViewData["Title"] = "Upload Media";
 }
 
-<h1>Upload Media</h1>
+<h1 class="text-center my-4">
+    <i class="bi bi-list-check me-2"> Upload Media </i>
+</h1>
 
-<div id="app" class="form-control">
+<div id="app" class="container">
     <div class="form-group">
         <label for="departmentId">Department ID:</label>
         <input type="number" class="form-control" name="departmentId" id="departmentId" v-model="photo.departmentId" required />
@@ -15,7 +17,7 @@
         <input type="file" class="form-control" name="file" id="file" v-on:change="GetFile" required />
     </div>
 
-    <button type="button" class="btn btn-primary" v-on:click="Upload">Upload</button>
+    <button type="button" class="btn btn-primary btn-block mt-4" v-on:click="Upload">Upload</button>
 </div>
 
 

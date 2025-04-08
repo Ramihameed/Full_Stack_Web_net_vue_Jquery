@@ -13,6 +13,6 @@ namespace TrainingForDatabase.Models
 
         public ICollection<Item> items { get; set; }
 
-        public Media Media { get; set; }
+        public ICollection<Media> Media { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainingForDatabase.Data;
 
@@ -11,9 +12,11 @@ using TrainingForDatabase.Data;
 namespace TrainingForDatabase.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250408062033_modelManyToMany")]
+    partial class modelManyToMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -244,202 +247,202 @@ namespace TrainingForDatabase.Migrations
                         new
                         {
                             CourseId = 1,
-                            CourseName = "Introduction to Computer Science"
+                            CourseName = "Course 1"
                         },
                         new
                         {
                             CourseId = 2,
-                            CourseName = "History of Western Civilization"
+                            CourseName = "Course 2"
                         },
                         new
                         {
                             CourseId = 3,
-                            CourseName = "Data Structures and Algorithms"
+                            CourseName = "Course 3"
                         },
                         new
                         {
                             CourseId = 4,
-                            CourseName = "Principles of Marketing"
+                            CourseName = "Course 4"
                         },
                         new
                         {
                             CourseId = 5,
-                            CourseName = "Financial Accounting"
+                            CourseName = "Course 5"
                         },
                         new
                         {
                             CourseId = 6,
-                            CourseName = "Human Resource Management"
+                            CourseName = "Course 6"
                         },
                         new
                         {
                             CourseId = 7,
-                            CourseName = "Operations Management"
+                            CourseName = "Course 7"
                         },
                         new
                         {
                             CourseId = 8,
-                            CourseName = "Business Law"
+                            CourseName = "Course 8"
                         },
                         new
                         {
                             CourseId = 9,
-                            CourseName = "Advanced Software Development"
+                            CourseName = "Course 9"
                         },
                         new
                         {
                             CourseId = 10,
-                            CourseName = "Corporate Strategy"
+                            CourseName = "Course 10"
                         },
                         new
                         {
                             CourseId = 11,
-                            CourseName = "Economics for Business"
+                            CourseName = "Course 11"
                         },
                         new
                         {
                             CourseId = 12,
-                            CourseName = "International Business"
+                            CourseName = "Course 12"
                         },
                         new
                         {
                             CourseId = 13,
-                            CourseName = "Supply Chain Management"
+                            CourseName = "Course 13"
                         },
                         new
                         {
                             CourseId = 14,
-                            CourseName = "Project Management"
+                            CourseName = "Course 14"
                         },
                         new
                         {
                             CourseId = 15,
-                            CourseName = "Digital Marketing"
+                            CourseName = "Course 15"
                         },
                         new
                         {
                             CourseId = 16,
-                            CourseName = "Software Engineering"
+                            CourseName = "Course 16"
                         },
                         new
                         {
                             CourseId = 17,
-                            CourseName = "Artificial Intelligence"
+                            CourseName = "Course 17"
                         },
                         new
                         {
                             CourseId = 18,
-                            CourseName = "Cloud Computing"
+                            CourseName = "Course 18"
                         },
                         new
                         {
                             CourseId = 19,
-                            CourseName = "Business Analytics"
+                            CourseName = "Course 19"
                         },
                         new
                         {
                             CourseId = 20,
-                            CourseName = "Leadership and Management"
+                            CourseName = "Course 20"
                         },
                         new
                         {
                             CourseId = 21,
-                            CourseName = "Managerial Accounting"
+                            CourseName = "Course 21"
                         },
                         new
                         {
                             CourseId = 22,
-                            CourseName = "Legal Aspects of Business"
+                            CourseName = "Course 22"
                         },
                         new
                         {
                             CourseId = 23,
-                            CourseName = "Cybersecurity"
+                            CourseName = "Course 23"
                         },
                         new
                         {
                             CourseId = 24,
-                            CourseName = "Enterprise Resource Planning"
+                            CourseName = "Course 24"
                         },
                         new
                         {
                             CourseId = 25,
-                            CourseName = "Supply Chain Logistics"
+                            CourseName = "Course 25"
                         },
                         new
                         {
                             CourseId = 26,
-                            CourseName = "Corporate Governance"
+                            CourseName = "Course 26"
                         },
                         new
                         {
                             CourseId = 27,
-                            CourseName = "Corporate Social Responsibility"
+                            CourseName = "Course 27"
                         },
                         new
                         {
                             CourseId = 28,
-                            CourseName = "Business Intelligence"
+                            CourseName = "Course 28"
                         },
                         new
                         {
                             CourseId = 29,
-                            CourseName = "Advanced Marketing Strategies"
+                            CourseName = "Course 29"
                         },
                         new
                         {
                             CourseId = 30,
-                            CourseName = "Financial Management"
+                            CourseName = "Course 30"
                         },
                         new
                         {
                             CourseId = 31,
-                            CourseName = "Human Behavior in Organizations"
+                            CourseName = "Course 31"
                         },
                         new
                         {
                             CourseId = 32,
-                            CourseName = "Digital Transformation"
+                            CourseName = "Course 32"
                         },
                         new
                         {
                             CourseId = 33,
-                            CourseName = "Mobile App Development"
+                            CourseName = "Course 33"
                         },
                         new
                         {
                             CourseId = 34,
-                            CourseName = "Ethics in Business"
+                            CourseName = "Course 34"
                         },
                         new
                         {
                             CourseId = 35,
-                            CourseName = "Global Supply Chain Strategies"
+                            CourseName = "Course 35"
                         },
                         new
                         {
                             CourseId = 36,
-                            CourseName = "Cloud Security"
+                            CourseName = "Course 36"
                         },
                         new
                         {
                             CourseId = 37,
-                            CourseName = "Data Science and Big Data"
+                            CourseName = "Course 37"
                         },
                         new
                         {
                             CourseId = 38,
-                            CourseName = "Financial Planning"
+                            CourseName = "Course 38"
                         },
                         new
                         {
                             CourseId = 39,
-                            CourseName = "E-commerce"
+                            CourseName = "Course 39"
                         },
                         new
                         {
                             CourseId = 40,
-                            CourseName = "Innovation and Entrepreneurship"
+                            CourseName = "Course 40"
                         });
                 });
 
@@ -463,12 +466,12 @@ namespace TrainingForDatabase.Migrations
                         new
                         {
                             Id = 1,
-                            name = "Human Resources"
+                            name = "HR"
                         },
                         new
                         {
                             Id = 2,
-                            name = "Information Technology"
+                            name = "IT"
                         },
                         new
                         {
@@ -498,12 +501,12 @@ namespace TrainingForDatabase.Migrations
                         new
                         {
                             Id = 8,
-                            name = "Customer Support"
+                            name = "Customer Service"
                         },
                         new
                         {
                             Id = 9,
-                            name = "Research & Development"
+                            name = "Research and Development"
                         },
                         new
                         {
@@ -544,122 +547,402 @@ namespace TrainingForDatabase.Migrations
                         new
                         {
                             Id = 1,
-                            DepartmentId = 2,
-                            description = "Dell XPS 13",
-                            name = "Laptop",
-                            price = 999
+                            DepartmentId = 1,
+                            description = "Description 1",
+                            name = "Item 1",
+                            price = 397
                         },
                         new
                         {
                             Id = 2,
-                            DepartmentId = 1,
-                            description = "Ergonomic Office Chair",
-                            name = "Office Chair",
-                            price = 150
+                            DepartmentId = 2,
+                            description = "Description 2",
+                            name = "Item 2",
+                            price = 844
                         },
                         new
                         {
                             Id = 3,
-                            DepartmentId = 2,
-                            description = "Apple iPhone 14",
-                            name = "Smartphone",
-                            price = 799
+                            DepartmentId = 3,
+                            description = "Description 3",
+                            name = "Item 3",
+                            price = 321
                         },
                         new
                         {
                             Id = 4,
-                            DepartmentId = 1,
-                            description = "HP LaserJet Pro",
-                            name = "Printer",
-                            price = 200
+                            DepartmentId = 4,
+                            description = "Description 4",
+                            name = "Item 4",
+                            price = 16
                         },
                         new
                         {
                             Id = 5,
-                            DepartmentId = 4,
-                            description = "Epson Projector 1080p",
-                            name = "Conference Room Projector",
-                            price = 1200
+                            DepartmentId = 5,
+                            description = "Description 5",
+                            name = "Item 5",
+                            price = 109
                         },
                         new
                         {
                             Id = 6,
                             DepartmentId = 1,
-                            description = "Wooden Executive Desk",
-                            name = "Desk",
-                            price = 300
+                            description = "Description 6",
+                            name = "Item 6",
+                            price = 884
                         },
                         new
                         {
                             Id = 7,
                             DepartmentId = 2,
-                            description = "Bose QuietComfort 35",
-                            name = "Headphones",
-                            price = 350
+                            description = "Description 7",
+                            name = "Item 7",
+                            price = 290
                         },
                         new
                         {
                             Id = 8,
-                            DepartmentId = 8,
-                            description = "Logitech C920",
-                            name = "Webcam",
-                            price = 80
+                            DepartmentId = 3,
+                            description = "Description 8",
+                            name = "Item 8",
+                            price = 784
                         },
                         new
                         {
                             Id = 9,
-                            DepartmentId = 5,
-                            description = "Salesforce Subscription",
-                            name = "Sales CRM Software",
-                            price = 1500
+                            DepartmentId = 4,
+                            description = "Description 9",
+                            name = "Item 9",
+                            price = 281
                         },
                         new
                         {
                             Id = 10,
-                            DepartmentId = 8,
-                            description = "Zendesk Subscription",
-                            name = "Customer Support Software",
-                            price = 500
+                            DepartmentId = 5,
+                            description = "Description 10",
+                            name = "Item 10",
+                            price = 673
                         },
                         new
                         {
                             Id = 11,
-                            DepartmentId = 3,
-                            description = "QuickBooks Online",
-                            name = "Accounting Software",
-                            price = 300
+                            DepartmentId = 6,
+                            description = "Description 11",
+                            name = "Item 11",
+                            price = 322
                         },
                         new
                         {
                             Id = 12,
-                            DepartmentId = 2,
-                            description = "AWS EC2 Subscription",
-                            name = "Cloud Hosting Service",
-                            price = 1000
+                            DepartmentId = 7,
+                            description = "Description 12",
+                            name = "Item 12",
+                            price = 164
                         },
                         new
                         {
                             Id = 13,
-                            DepartmentId = 9,
-                            description = "Autodesk Fusion 360",
-                            name = "R&D Software License",
-                            price = 200
+                            DepartmentId = 8,
+                            description = "Description 13",
+                            name = "Item 13",
+                            price = 240
                         },
                         new
                         {
                             Id = 14,
-                            DepartmentId = 10,
-                            description = "SAP SCM License",
-                            name = "Supply Chain Management Tool",
-                            price = 3000
+                            DepartmentId = 9,
+                            description = "Description 14",
+                            name = "Item 14",
+                            price = 615
                         },
                         new
                         {
                             Id = 15,
+                            DepartmentId = 10,
+                            description = "Description 15",
+                            name = "Item 15",
+                            price = 50
+                        },
+                        new
+                        {
+                            Id = 16,
+                            DepartmentId = 1,
+                            description = "Description 16",
+                            name = "Item 16",
+                            price = 113
+                        },
+                        new
+                        {
+                            Id = 17,
+                            DepartmentId = 2,
+                            description = "Description 17",
+                            name = "Item 17",
+                            price = 735
+                        },
+                        new
+                        {
+                            Id = 18,
+                            DepartmentId = 3,
+                            description = "Description 18",
+                            name = "Item 18",
+                            price = 625
+                        },
+                        new
+                        {
+                            Id = 19,
+                            DepartmentId = 4,
+                            description = "Description 19",
+                            name = "Item 19",
+                            price = 101
+                        },
+                        new
+                        {
+                            Id = 20,
+                            DepartmentId = 5,
+                            description = "Description 20",
+                            name = "Item 20",
+                            price = 293
+                        },
+                        new
+                        {
+                            Id = 21,
+                            DepartmentId = 6,
+                            description = "Description 21",
+                            name = "Item 21",
+                            price = 318
+                        },
+                        new
+                        {
+                            Id = 22,
                             DepartmentId = 7,
-                            description = "LexisNexis Subscription",
-                            name = "Legal Compliance Software",
-                            price = 400
+                            description = "Description 22",
+                            name = "Item 22",
+                            price = 737
+                        },
+                        new
+                        {
+                            Id = 23,
+                            DepartmentId = 8,
+                            description = "Description 23",
+                            name = "Item 23",
+                            price = 294
+                        },
+                        new
+                        {
+                            Id = 24,
+                            DepartmentId = 9,
+                            description = "Description 24",
+                            name = "Item 24",
+                            price = 85
+                        },
+                        new
+                        {
+                            Id = 25,
+                            DepartmentId = 10,
+                            description = "Description 25",
+                            name = "Item 25",
+                            price = 865
+                        },
+                        new
+                        {
+                            Id = 26,
+                            DepartmentId = 1,
+                            description = "Description 26",
+                            name = "Item 26",
+                            price = 828
+                        },
+                        new
+                        {
+                            Id = 27,
+                            DepartmentId = 2,
+                            description = "Description 27",
+                            name = "Item 27",
+                            price = 341
+                        },
+                        new
+                        {
+                            Id = 28,
+                            DepartmentId = 3,
+                            description = "Description 28",
+                            name = "Item 28",
+                            price = 775
+                        },
+                        new
+                        {
+                            Id = 29,
+                            DepartmentId = 4,
+                            description = "Description 29",
+                            name = "Item 29",
+                            price = 101
+                        },
+                        new
+                        {
+                            Id = 30,
+                            DepartmentId = 5,
+                            description = "Description 30",
+                            name = "Item 30",
+                            price = 483
+                        },
+                        new
+                        {
+                            Id = 31,
+                            DepartmentId = 6,
+                            description = "Description 31",
+                            name = "Item 31",
+                            price = 682
+                        },
+                        new
+                        {
+                            Id = 32,
+                            DepartmentId = 7,
+                            description = "Description 32",
+                            name = "Item 32",
+                            price = 490
+                        },
+                        new
+                        {
+                            Id = 33,
+                            DepartmentId = 8,
+                            description = "Description 33",
+                            name = "Item 33",
+                            price = 414
+                        },
+                        new
+                        {
+                            Id = 34,
+                            DepartmentId = 9,
+                            description = "Description 34",
+                            name = "Item 34",
+                            price = 243
+                        },
+                        new
+                        {
+                            Id = 35,
+                            DepartmentId = 10,
+                            description = "Description 35",
+                            name = "Item 35",
+                            price = 100
+                        },
+                        new
+                        {
+                            Id = 36,
+                            DepartmentId = 1,
+                            description = "Description 36",
+                            name = "Item 36",
+                            price = 811
+                        },
+                        new
+                        {
+                            Id = 37,
+                            DepartmentId = 2,
+                            description = "Description 37",
+                            name = "Item 37",
+                            price = 532
+                        },
+                        new
+                        {
+                            Id = 38,
+                            DepartmentId = 3,
+                            description = "Description 38",
+                            name = "Item 38",
+                            price = 611
+                        },
+                        new
+                        {
+                            Id = 39,
+                            DepartmentId = 4,
+                            description = "Description 39",
+                            name = "Item 39",
+                            price = 139
+                        },
+                        new
+                        {
+                            Id = 40,
+                            DepartmentId = 5,
+                            description = "Description 40",
+                            name = "Item 40",
+                            price = 114
+                        },
+                        new
+                        {
+                            Id = 41,
+                            DepartmentId = 6,
+                            description = "Description 41",
+                            name = "Item 41",
+                            price = 266
+                        },
+                        new
+                        {
+                            Id = 42,
+                            DepartmentId = 7,
+                            description = "Description 42",
+                            name = "Item 42",
+                            price = 895
+                        },
+                        new
+                        {
+                            Id = 43,
+                            DepartmentId = 8,
+                            description = "Description 43",
+                            name = "Item 43",
+                            price = 471
+                        },
+                        new
+                        {
+                            Id = 44,
+                            DepartmentId = 9,
+                            description = "Description 44",
+                            name = "Item 44",
+                            price = 401
+                        },
+                        new
+                        {
+                            Id = 45,
+                            DepartmentId = 10,
+                            description = "Description 45",
+                            name = "Item 45",
+                            price = 407
+                        },
+                        new
+                        {
+                            Id = 46,
+                            DepartmentId = 1,
+                            description = "Description 46",
+                            name = "Item 46",
+                            price = 940
+                        },
+                        new
+                        {
+                            Id = 47,
+                            DepartmentId = 2,
+                            description = "Description 47",
+                            name = "Item 47",
+                            price = 896
+                        },
+                        new
+                        {
+                            Id = 48,
+                            DepartmentId = 3,
+                            description = "Description 48",
+                            name = "Item 48",
+                            price = 178
+                        },
+                        new
+                        {
+                            Id = 49,
+                            DepartmentId = 4,
+                            description = "Description 49",
+                            name = "Item 49",
+                            price = 724
+                        },
+                        new
+                        {
+                            Id = 50,
+                            DepartmentId = 5,
+                            description = "Description 50",
+                            name = "Item 50",
+                            price = 277
                         });
                 });
 
@@ -705,202 +988,202 @@ namespace TrainingForDatabase.Migrations
                         new
                         {
                             StudentId = 1,
-                            Name = "John Doe"
+                            Name = "Student 1"
                         },
                         new
                         {
                             StudentId = 2,
-                            Name = "Alice Johnson"
+                            Name = "Student 2"
                         },
                         new
                         {
                             StudentId = 3,
-                            Name = "Chris Williams"
+                            Name = "Student 3"
                         },
                         new
                         {
                             StudentId = 4,
-                            Name = "Mary Smith"
+                            Name = "Student 4"
                         },
                         new
                         {
                             StudentId = 5,
-                            Name = "David Lee"
+                            Name = "Student 5"
                         },
                         new
                         {
                             StudentId = 6,
-                            Name = "Sophia Brown"
+                            Name = "Student 6"
                         },
                         new
                         {
                             StudentId = 7,
-                            Name = "James Wilson"
+                            Name = "Student 7"
                         },
                         new
                         {
                             StudentId = 8,
-                            Name = "Linda Martinez"
+                            Name = "Student 8"
                         },
                         new
                         {
                             StudentId = 9,
-                            Name = "Michael Taylor"
+                            Name = "Student 9"
                         },
                         new
                         {
                             StudentId = 10,
-                            Name = "Sarah Anderson"
+                            Name = "Student 10"
                         },
                         new
                         {
                             StudentId = 11,
-                            Name = "Daniel Thomas"
+                            Name = "Student 11"
                         },
                         new
                         {
                             StudentId = 12,
-                            Name = "Emma Jackson"
+                            Name = "Student 12"
                         },
                         new
                         {
                             StudentId = 13,
-                            Name = "Lucas White"
+                            Name = "Student 13"
                         },
                         new
                         {
                             StudentId = 14,
-                            Name = "Mia Clark"
+                            Name = "Student 14"
                         },
                         new
                         {
                             StudentId = 15,
-                            Name = "Ethan Hall"
+                            Name = "Student 15"
                         },
                         new
                         {
                             StudentId = 16,
-                            Name = "Oliver Allen"
+                            Name = "Student 16"
                         },
                         new
                         {
                             StudentId = 17,
-                            Name = "Charlotte Young"
+                            Name = "Student 17"
                         },
                         new
                         {
                             StudentId = 18,
-                            Name = "Benjamin King"
+                            Name = "Student 18"
                         },
                         new
                         {
                             StudentId = 19,
-                            Name = "Amelia Scott"
+                            Name = "Student 19"
                         },
                         new
                         {
                             StudentId = 20,
-                            Name = "Henry Harris"
+                            Name = "Student 20"
                         },
                         new
                         {
                             StudentId = 21,
-                            Name = "Ella Walker"
+                            Name = "Student 21"
                         },
                         new
                         {
                             StudentId = 22,
-                            Name = "Samuel Lewis"
+                            Name = "Student 22"
                         },
                         new
                         {
                             StudentId = 23,
-                            Name = "Victoria King"
+                            Name = "Student 23"
                         },
                         new
                         {
                             StudentId = 24,
-                            Name = "Jack White"
+                            Name = "Student 24"
                         },
                         new
                         {
                             StudentId = 25,
-                            Name = "Ava Green"
+                            Name = "Student 25"
                         },
                         new
                         {
                             StudentId = 26,
-                            Name = "Liam Adams"
+                            Name = "Student 26"
                         },
                         new
                         {
                             StudentId = 27,
-                            Name = "Isabella Nelson"
+                            Name = "Student 27"
                         },
                         new
                         {
                             StudentId = 28,
-                            Name = "Henry Carter"
+                            Name = "Student 28"
                         },
                         new
                         {
                             StudentId = 29,
-                            Name = "Sophia Mitchell"
+                            Name = "Student 29"
                         },
                         new
                         {
                             StudentId = 30,
-                            Name = "Oliver Perez"
+                            Name = "Student 30"
                         },
                         new
                         {
                             StudentId = 31,
-                            Name = "Charlotte Murphy"
+                            Name = "Student 31"
                         },
                         new
                         {
                             StudentId = 32,
-                            Name = "Jack Robinson"
+                            Name = "Student 32"
                         },
                         new
                         {
                             StudentId = 33,
-                            Name = "Liam Martinez"
+                            Name = "Student 33"
                         },
                         new
                         {
                             StudentId = 34,
-                            Name = "Mia Evans"
+                            Name = "Student 34"
                         },
                         new
                         {
                             StudentId = 35,
-                            Name = "Ethan Gonzalez"
+                            Name = "Student 35"
                         },
                         new
                         {
                             StudentId = 36,
-                            Name = "Emily Reed"
+                            Name = "Student 36"
                         },
                         new
                         {
                             StudentId = 37,
-                            Name = "Logan Cooper"
+                            Name = "Student 37"
                         },
                         new
                         {
                             StudentId = 38,
-                            Name = "Scarlett Mitchell"
+                            Name = "Student 38"
                         },
                         new
                         {
                             StudentId = 39,
-                            Name = "Mason Perez"
+                            Name = "Student 39"
                         },
                         new
                         {
                             StudentId = 40,
-                            Name = "Zoe Stewart"
+                            Name = "Student 40"
                         });
                 });
 
@@ -917,6 +1200,33 @@ namespace TrainingForDatabase.Migrations
                     b.HasIndex("CourseId");
 
                     b.ToTable("StudentCourses");
+
+                    b.HasData(
+                        new
+                        {
+                            StudentId = 1,
+                            CourseId = 1
+                        },
+                        new
+                        {
+                            StudentId = 1,
+                            CourseId = 2
+                        },
+                        new
+                        {
+                            StudentId = 2,
+                            CourseId = 3
+                        },
+                        new
+                        {
+                            StudentId = 3,
+                            CourseId = 1
+                        },
+                        new
+                        {
+                            StudentId = 3,
+                            CourseId = 3
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
