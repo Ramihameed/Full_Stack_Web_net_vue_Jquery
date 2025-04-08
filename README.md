@@ -1,4 +1,4 @@
-Full_Stack_Web_net_vue_Jquery.
+#Full_Stack_Web_net_vue_Jquery.
 
 Done by me Alone while on training period in Transition Tech under SoftWare Developer Role
 
