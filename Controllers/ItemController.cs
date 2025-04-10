@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TrainingForDatabase.ItemVM;
 using TrainingForDatabase.services;
 
@@ -177,6 +178,21 @@ namespace TrainingForDatabase.Controllers
         public async Task<IActionResult> Deletee()
         {
             return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> ExportToExcel(string SearchValue, string SortColumn, string ColDir, int Skip, int PageSize)
+        {
+            try
+            {
+                byte[] fileContents = await _itemService.ExportToExcel(SearchValue, SortColumn, ColDir, Skip, PageSize);
+                return File(fileContents, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "items.xlsx");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
         }
     }
 }

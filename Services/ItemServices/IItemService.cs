@@ -15,6 +15,9 @@ namespace TrainingForDatabase.services
 
         Task<bool> Delete(int id);
 
+        Task<byte[]> ExportToExcel(string SearchValue, string SortColumn, string ColDir, int Skip, int PageSize, string lang = "");
+
+
 
     }
 }
