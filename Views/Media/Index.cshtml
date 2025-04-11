@@ -57,6 +57,7 @@
                         }, 3000);
                     })
                     .catch(error => {
+                        swal("not logged in");
                         console.error('Error uploading file:', error);
                     });
             },

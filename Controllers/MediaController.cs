@@ -3,17 +3,23 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using TrainingForDatabase.Services.MediaServices;
 using TrainingForDatabase.ViewModels.MediaVM;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
+
 
 namespace TrainingForDatabase.Controllers
 {
     public class MediaController : Controller
     {
         private readonly IMediaService _mediaService;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public MediaController(IMediaService mediaService)
+        public MediaController(IMediaService mediaService, UserManager<IdentityUser> userManager)
         {
             _mediaService = mediaService;
+            _userManager = userManager;
         }
+
 
         // GET: Media
         public IActionResult Index()
@@ -32,16 +38,25 @@ namespace TrainingForDatabase.Controllers
             {
                 try
                 {
-                    // Handle file processing (e.g., saving to disk or database)
-                    bool isUploaded = await _mediaService.Upload(model);
+                    var user = await _userManager.GetUserAsync(User);
 
-                    if (isUploaded)
+                    if (user != null)
                     {
-                        return Ok(new { message = "File uploaded successfully!" });
+                        // Handle file processing (e.g., saving to disk or database)
+                        bool isUploaded = await _mediaService.Upload(model, user);
+
+                        if (isUploaded)
+                        {
+                            return Ok(new { message = "File uploaded successfully!" });
+                        }
+                        else
+                        {
+                            return BadRequest(new { message = "File upload failed." });
+                        }
                     }
                     else
                     {
-                        return BadRequest(new { message = "File upload failed." });
+                        return BadRequest(new { message = "you are not logged in" });
                     }
                 }
                 catch (Exception ex)

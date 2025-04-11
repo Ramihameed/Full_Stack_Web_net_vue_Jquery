@@ -12,6 +12,9 @@ namespace TrainingForDatabase.ViewModels.MediaVM
         public IFormFile File { get; set; }
         public string? FilePath { get; set; }
 
+
+        public string UploadedBy { get; set; }
+
         // Foreign Key to Department
         public int DepartmentId { get; set; }
 

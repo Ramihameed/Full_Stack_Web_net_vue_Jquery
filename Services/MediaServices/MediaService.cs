@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using TrainingForDatabase.Data;
 using TrainingForDatabase.Models;
 using TrainingForDatabase.ViewModels.MediaVM;
@@ -30,7 +31,8 @@ namespace TrainingForDatabase.Services.MediaServices
                 Id = media.Id,
                 DepartmentId = media.DepartmentId,
                 FilePath = media.FilePath,
-                DepartmentName = media.Department.name
+                DepartmentName = media.Department.name,
+                UploadedBy = media.UploadedBy
 
 
             }).ToList();
@@ -39,7 +41,7 @@ namespace TrainingForDatabase.Services.MediaServices
         }
 
 
-        public async Task<bool> Upload(MediaVM model)
+        public async Task<bool> Upload(MediaVM model, IdentityUser user)
         {
             if (model.File != null && model.File.Length > 0)
             {
@@ -62,7 +64,8 @@ namespace TrainingForDatabase.Services.MediaServices
                 var media = new TrainingForDatabase.Models.Media
                 {
                     DepartmentId = model.DepartmentId,
-                    FilePath = Path.Combine("images", fileName)
+                    FilePath = Path.Combine("images", fileName),
+                    UploadedBy = user?.UserName
                 };
 
                 _context.Media.Add(media);

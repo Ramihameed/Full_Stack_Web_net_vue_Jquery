@@ -12,6 +12,8 @@ namespace TrainingForDatabase.Models
         // Foreign Key to Department
         public int DepartmentId { get; set; }
 
+        public string UploadedBy { get; set; }
+
         // Navigation property to Department
         public Department Department { get; set; }
     }
